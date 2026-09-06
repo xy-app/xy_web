@@ -1,0 +1,928 @@
+{
+  "plugin_id": "xy_web",
+  "name": "Web 自动化组件套件 (Web Automation Suite)",
+  "version": "0.4.9",
+  "group": "Web",
+  "group_icon": "🌐",
+  "description": "官方原生浏览器与网页自动化组件套件，支持 DOM 元素拾取、拟人化事件分发、表格提取、弹窗交互与多标签管理",
+  "actions": [
+    {
+      "tag": "WebActionChainsPerform",
+      "display_name": "执行动作链",
+      "description": "按序执行已编排的复杂鼠标移动、按住、拖拽、击键等连续动作链",
+      "keywords": [
+        "执行动作链",
+        "web_action_perform",
+        "chains_perform",
+        "gesture_perform"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionClick",
+      "display_name": "动作链.点击",
+      "description": "向动作链中追加鼠标点击指令",
+      "keywords": [
+        "动作链点击",
+        "web_action_click",
+        "action_click"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionClickHold",
+      "display_name": "动作链.按住鼠标",
+      "description": "向动作链中追加按住鼠标左键指令 (常用于拖拽或手势起始)",
+      "keywords": [
+        "动作链按住",
+        "web_action_click_hold",
+        "action_mouse_down"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionDoubleClick",
+      "display_name": "动作链.双击",
+      "description": "向动作链中追加鼠标双击指令",
+      "keywords": [
+        "动作链双击",
+        "web_action_double_click",
+        "action_double_click"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionDragDrop",
+      "display_name": "动作链.拖拽",
+      "description": "向动作链中追加将源元素拖拽释放至目标元素的指令 (常用于滑块验证与卡片排序)",
+      "keywords": [
+        "动作链拖拽",
+        "web_action_drag_drop",
+        "drag_and_drop",
+        "slider_drag"
+      ],
+      "fields": [
+        {
+          "name": "source",
+          "display_name": "source",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "target",
+          "display_name": "target",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionKeyDown",
+      "display_name": "动作链.按下修饰键",
+      "description": "向动作链中追加按下键盘修饰键 (Control/Alt/Shift/Meta) 指令",
+      "keywords": [
+        "动作链按下键",
+        "web_action_key_down",
+        "action_key_down"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "key",
+          "display_name": "key",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionKeyUp",
+      "display_name": "动作链.释放修饰键",
+      "description": "向动作链中追加释放键盘修饰键 (Control/Alt/Shift/Meta) 指令",
+      "keywords": [
+        "动作链释放键",
+        "web_action_key_up",
+        "action_key_up"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "key",
+          "display_name": "key",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionMoveTo",
+      "display_name": "动作链.移动鼠标",
+      "description": "向动作链中追加鼠标平滑移动至指定元素或偏移坐标指令 (Hover 悬停)",
+      "keywords": [
+        "动作链移动",
+        "web_action_move_to",
+        "hover",
+        "mouse_move"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "offset",
+          "display_name": "offset",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionPause",
+      "display_name": "动作链.暂停",
+      "description": "向动作链中追加指定毫秒时长的暂停等待指令 (拟人化操作停顿)",
+      "keywords": [
+        "动作链暂停",
+        "web_action_pause",
+        "action_pause",
+        "pause_ms"
+      ],
+      "fields": [
+        {
+          "name": "value",
+          "display_name": "value",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionRelease",
+      "display_name": "动作链.释放鼠标",
+      "description": "向动作链中追加释放鼠标按键指令 (常用于拖拽或手势结束)",
+      "keywords": [
+        "动作链释放",
+        "web_action_release",
+        "action_mouse_up"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebActionSendText",
+      "display_name": "动作链.输入文本",
+      "description": "向动作链中追加键入文本内容的指令",
+      "keywords": [
+        "动作链输入",
+        "web_action_send_text",
+        "action_send_text"
+      ],
+      "fields": [
+        {
+          "name": "text",
+          "display_name": "text",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebCookies",
+      "display_name": "获取Cookies",
+      "description": "获取当前网页会话的 Cookie 信息 (支持 JSON / Raw / Header 格式)",
+      "keywords": [
+        "获取Cookie",
+        "web_cookies",
+        "cookie",
+        "session_cookie",
+        "auth"
+      ],
+      "fields": [
+        {
+          "name": "format",
+          "display_name": "format",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "name",
+          "display_name": "name",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementAttribute",
+      "display_name": "获取元素属性",
+      "description": "获取指定网页 DOM 元素的属性值 (如 value, href, src, innerText 等)",
+      "keywords": [
+        "获取属性",
+        "web_attribute",
+        "get_attribute",
+        "href",
+        "value"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "attribute",
+          "display_name": "attribute",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementClear",
+      "display_name": "清空输入框",
+      "description": "清空指定网页文本输入框或文本域的内容",
+      "keywords": [
+        "清空输入框",
+        "web_clear",
+        "clear_text",
+        "empty_input"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementClick",
+      "display_name": "点击网页元素",
+      "description": "通过拟人化事件分发或直接点击指定的网页 DOM 元素",
+      "keywords": [
+        "点击元素",
+        "web_click",
+        "click_element",
+        "button_click"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementSelected",
+      "display_name": "元素是否选中",
+      "description": "判断指定的网页单选框 (Radio) 或复选框 (Checkbox) 是否处于选中状态",
+      "keywords": [
+        "是否选中",
+        "web_selected",
+        "is_checked",
+        "checkbox",
+        "radio"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementSendKey",
+      "display_name": "发送按键",
+      "description": "向指定的网页元素发送特殊按键序列 (如 Enter, Tab, Escape 等)",
+      "keywords": [
+        "发送按键",
+        "web_send_key",
+        "press_key",
+        "shortcut"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "key",
+          "display_name": "key",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementSendText",
+      "display_name": "输入文本",
+      "description": "向指定的网页输入框/文本域模拟拟人化击键或极速注入文本内容",
+      "keywords": [
+        "输入文本",
+        "web_send_text",
+        "type_text",
+        "input_text",
+        "fill_text"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "value",
+          "display_name": "value",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebElementSubmit",
+      "display_name": "提交表单",
+      "description": "触发表单提交操作 (如对表单内任意输入控件执行 submit 动作)",
+      "keywords": [
+        "提交表单",
+        "web_submit",
+        "form_submit",
+        "submit_button"
+      ],
+      "fields": [
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebExecute",
+      "display_name": "执行JS脚本",
+      "description": "在当前网页上下文中执行自定义 JavaScript 代码片段并获取返回值",
+      "keywords": [
+        "执行JS",
+        "web_execute",
+        "javascript",
+        "evaluate",
+        "js_code"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "value",
+          "display_name": "value",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebExtractTable",
+      "display_name": "提取表格数据",
+      "description": "自动识别并提取网页 table 表格或 ul/ol 列表数据为结构化数据矩阵",
+      "keywords": [
+        "提取表格",
+        "web_extract_table",
+        "table_scrape",
+        "list_extract",
+        "data_scraping"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebFocusDefaultFrame",
+      "display_name": "返回主框架",
+      "description": "从嵌套 iframe 框架中跳出，返回顶层主 HTML 页面上下文",
+      "keywords": [
+        "返回主框架",
+        "web_default_frame",
+        "top_frame",
+        "exit_iframe"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebGetElement",
+      "display_name": "获取网页元素",
+      "description": "通过 CSS / XPath / ID / Text / Role 等智能选择器定位并获取网页 DOM 元素",
+      "keywords": [
+        "获取元素",
+        "web_get_element",
+        "find_element",
+        "locator",
+        "css",
+        "xpath",
+        "dom"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "by",
+          "display_name": "by",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebHandleDialog",
+      "display_name": "处理网页弹窗",
+      "description": "自动响应由页面 JavaScript 触发的原生 Alert / Confirm / Prompt 弹窗",
+      "keywords": [
+        "处理弹窗",
+        "web_handle_dialog",
+        "alert",
+        "confirm",
+        "prompt",
+        "dialog"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "accept",
+          "display_name": "accept",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "prompt_text",
+          "display_name": "prompt_text",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebOpen",
+      "display_name": "打开网页",
+      "description": "启动或接管浏览器并打开指定网址 (URL)",
+      "keywords": [
+        "打开网页",
+        "web_open",
+        "open_url",
+        "navigate",
+        "browser",
+        "chrome",
+        "edge"
+      ],
+      "fields": [
+        {
+          "name": "url",
+          "display_name": "url",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "user_data_folder",
+          "display_name": "user_data_folder",
+          "intrinsic_type": "FolderPicker"
+        },
+        {
+          "name": "profile_directory",
+          "display_name": "profile_directory",
+          "intrinsic_type": "FilePicker"
+        },
+        {
+          "name": "browser",
+          "display_name": "browser",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebScreenshot",
+      "display_name": "网页截图",
+      "description": "截取网页视口或指定 Web 元素的图像并保存为图像对象",
+      "keywords": [
+        "网页截图",
+        "web_screenshot",
+        "page_screenshot",
+        "element_screenshot",
+        "capture"
+      ],
+      "fields": [
+        {
+          "name": "source",
+          "display_name": "source",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebSwitchTab",
+      "display_name": "切换标签页",
+      "description": "通过网页标题关键词或 URL 正则匹配切换当前活动的浏览器标签页 (Tab)",
+      "keywords": [
+        "切换标签页",
+        "web_switch_tab",
+        "switch_tab",
+        "new_tab",
+        "tab_control"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "title_or_url",
+          "display_name": "title_or_url",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebSwitchToFrame",
+      "display_name": "切换到框架",
+      "description": "通过索引、名称或选择器将当前上下文切换到指定的 iframe / frame 框架",
+      "keywords": [
+        "切换框架",
+        "web_switch_frame",
+        "switch_iframe",
+        "enter_frame"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "value",
+          "display_name": "value",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebUploadFile",
+      "display_name": "静默上传文件",
+      "description": "通过浏览器底层接口向 input[type=file] 注入文件路径，绕过系统原生弹窗",
+      "keywords": [
+        "上传文件",
+        "web_upload_file",
+        "file_upload",
+        "upload_input"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "file_path",
+          "display_name": "file_path",
+          "intrinsic_type": "FilePicker"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitAlert",
+      "display_name": "等待弹窗",
+      "description": "在指定超时时间内等待页面 JavaScript 原生 Alert/Confirm 弹窗出现",
+      "keywords": [
+        "等待弹窗",
+        "web_wait_alert",
+        "wait_dialog",
+        "alert_present"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitClickable",
+      "display_name": "等待元素可点击",
+      "description": "在指定超时时间内等待网页元素变为可见且处于可点击 (Enabled/Clickable) 状态",
+      "keywords": [
+        "等待可点击",
+        "web_wait_clickable",
+        "wait_clickable",
+        "wait_enabled"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "by",
+          "display_name": "by",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitFrameAvailable",
+      "display_name": "等待框架可用",
+      "description": "在指定超时时间内等待指定 iframe / frame 框架可用并自动切入",
+      "keywords": [
+        "等待框架",
+        "web_wait_frame",
+        "wait_iframe",
+        "frame_available"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "by",
+          "display_name": "by",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitPresence",
+      "display_name": "等待元素呈现",
+      "description": "在指定超时时间内等待网页 DOM 元素呈现或消失",
+      "keywords": [
+        "等待呈现",
+        "web_wait_presence",
+        "wait_element",
+        "presence",
+        "wait_dom"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "by",
+          "display_name": "by",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "mode",
+          "display_name": "mode",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitTitle",
+      "display_name": "等待标题",
+      "description": "在指定超时时间内等待网页标题完全匹配或包含指定文本",
+      "keywords": [
+        "等待标题",
+        "web_wait_title",
+        "match_title",
+        "title_contains"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "text",
+          "display_name": "text",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "method",
+          "display_name": "method",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitVisibilityByElement",
+      "display_name": "等待元素可见(元素)",
+      "description": "在指定超时时间内等待已有网页元素句柄变为可见或隐藏",
+      "keywords": [
+        "等待可见",
+        "web_wait_visibility_element",
+        "wait_element_visible"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "visibility",
+          "display_name": "visibility",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    },
+    {
+      "tag": "WebWaitVisibilityByLocator",
+      "display_name": "等待元素可见(定位符)",
+      "description": "通过选择器定位并在指定超时时间内等待网页元素可见或隐藏",
+      "keywords": [
+        "等待可见",
+        "web_wait_visibility",
+        "wait_visible",
+        "locator_visible"
+      ],
+      "fields": [
+        {
+          "name": "driver",
+          "display_name": "driver",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "element",
+          "display_name": "element",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "timeout",
+          "display_name": "timeout",
+          "intrinsic_type": "TimePicker"
+        },
+        {
+          "name": "by",
+          "display_name": "by",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "visibility",
+          "display_name": "visibility",
+          "intrinsic_type": "String"
+        },
+        {
+          "name": "mode",
+          "display_name": "mode",
+          "intrinsic_type": "String"
+        }
+      ],
+      "output_type": "string"
+    }
+  ]
+}
