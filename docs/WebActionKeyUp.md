@@ -1,23 +1,15 @@
-# 动作链.释放修饰键
+# 动作链.释放修饰键 (WebActionKeyUp)
 
-释放键盘修饰键，配合 [动作链.按下修饰键 ](./actions/WebActionKeyDown.md)动作使用。 用来释放 [动作链.按下修饰键 ](./actions/WebActionKeyDown.md)动作中按下的修饰键。
-
-* 键盘修饰键包括：<kbd>Control </kbd>、<kbd>Alt</kbd> 和 <kbd>Shift</kbd> 等。
-* 该动作需要加入到动作链当中。
-
-
-
-## 子流程
-
-> 不支持
+向当前动作链追加释放键盘修饰键的指令，与按下修饰键动作成对使用。
 
 ## 运行参数
 
-* 元素
-> *Web* 元素，可选。如果不提供，发送修饰键到当前有焦点的 *Web* 元素。 
+* **目标元素 (element)**
+> 接收按键释放事件的目标网页元素。若留空，则发送给当前拥有焦点的元素。
 
-* 修饰键
->   要发送的修饰键。如：<kbd>Control </kbd>、<kbd>Alt</kbd> 或 <kbd>Shift</kbd>等。
+* **修饰键 (key)**
+> 要释放的键盘修饰键名称，如 Control、Alt、Shift、Meta。
 
 ## 输出
-> 无   
+
+> 无

@@ -1,15 +1,16 @@
 {
   "plugin_id": "xy_web",
-  "name": "Web 自动化组件套件 (Web Automation Suite)",
-  "version": "0.4.9",
+  "name": "网页与浏览器自动化 (Web Automation)",
+  "version": "0.50.5",
   "group": "Web",
   "group_icon": "🌐",
-  "description": "官方原生浏览器与网页自动化组件套件，支持 DOM 元素拾取、拟人化事件分发、表格提取、弹窗交互与多标签管理",
+  "description": "提供自动打开 Chrome/Edge 浏览器、点击网页元素、自动填写表单、提取网页表格、处理弹窗与多标签页管理等功能",
   "actions": [
     {
       "tag": "WebActionChainsPerform",
       "display_name": "执行动作链",
-      "description": "按序执行已编排的复杂鼠标移动、按住、拖拽、击键等连续动作链",
+      "icon": "⛓️",
+      "description": "按顺序一次性执行滑动、按住拖拽或快捷键等一系列连续网页操作",
       "keywords": [
         "执行动作链",
         "web_action_perform",
@@ -28,7 +29,8 @@
     {
       "tag": "WebActionClick",
       "display_name": "动作链.点击",
-      "description": "向动作链中追加鼠标点击指令",
+      "icon": "🖱️",
+      "description": "在连续动作中添加一次鼠标点击操作",
       "keywords": [
         "动作链点击",
         "web_action_click",
@@ -46,7 +48,8 @@
     {
       "tag": "WebActionClickHold",
       "display_name": "动作链.按住鼠标",
-      "description": "向动作链中追加按住鼠标左键指令 (常用于拖拽或手势起始)",
+      "icon": "✊",
+      "description": "在连续动作中按住鼠标左键不放，常用于拖拽或手势操作",
       "keywords": [
         "动作链按住",
         "web_action_click_hold",
@@ -64,7 +67,8 @@
     {
       "tag": "WebActionDoubleClick",
       "display_name": "动作链.双击",
-      "description": "向动作链中追加鼠标双击指令",
+      "icon": "👆",
+      "description": "在连续动作中添加一次鼠标双击操作",
       "keywords": [
         "动作链双击",
         "web_action_double_click",
@@ -82,7 +86,8 @@
     {
       "tag": "WebActionDragDrop",
       "display_name": "动作链.拖拽",
-      "description": "向动作链中追加将源元素拖拽释放至目标元素的指令 (常用于滑块验证与卡片排序)",
+      "icon": "🖐️",
+      "description": "将网页上的某个元素拖拽并放置到目标位置，常用于滑块验证码或排序",
       "keywords": [
         "动作链拖拽",
         "web_action_drag_drop",
@@ -106,7 +111,8 @@
     {
       "tag": "WebActionKeyDown",
       "display_name": "动作链.按下修饰键",
-      "description": "向动作链中追加按下键盘修饰键 (Control/Alt/Shift/Meta) 指令",
+      "icon": "⬇️",
+      "description": "在连续动作中按住某个键盘控制键 (如 Ctrl、Shift 或 Alt)",
       "keywords": [
         "动作链按下键",
         "web_action_key_down",
@@ -129,7 +135,8 @@
     {
       "tag": "WebActionKeyUp",
       "display_name": "动作链.释放修饰键",
-      "description": "向动作链中追加释放键盘修饰键 (Control/Alt/Shift/Meta) 指令",
+      "icon": "⬆️",
+      "description": "在连续动作中松开之前按住的键盘控制键",
       "keywords": [
         "动作链释放键",
         "web_action_key_up",
@@ -152,7 +159,8 @@
     {
       "tag": "WebActionMoveTo",
       "display_name": "动作链.移动鼠标",
-      "description": "向动作链中追加鼠标平滑移动至指定元素或偏移坐标指令 (Hover 悬停)",
+      "icon": "↗️",
+      "description": "让鼠标光标平滑移动到指定网页元素上方，模拟鼠标悬停 (Hover) 效果",
       "keywords": [
         "动作链移动",
         "web_action_move_to",
@@ -176,7 +184,8 @@
     {
       "tag": "WebActionPause",
       "display_name": "动作链.暂停",
-      "description": "向动作链中追加指定毫秒时长的暂停等待指令 (拟人化操作停顿)",
+      "icon": "⏸️",
+      "description": "在连续动作中暂停等待指定的毫秒时间，模拟真人操作停顿",
       "keywords": [
         "动作链暂停",
         "web_action_pause",
@@ -195,7 +204,8 @@
     {
       "tag": "WebActionRelease",
       "display_name": "动作链.释放鼠标",
-      "description": "向动作链中追加释放鼠标按键指令 (常用于拖拽或手势结束)",
+      "icon": "✋",
+      "description": "在连续动作中松开鼠标按键，结束拖拽操作",
       "keywords": [
         "动作链释放",
         "web_action_release",
@@ -213,7 +223,8 @@
     {
       "tag": "WebActionSendText",
       "display_name": "动作链.输入文本",
-      "description": "向动作链中追加键入文本内容的指令",
+      "icon": "💬",
+      "description": "在连续动作中输入一段指定的文字",
       "keywords": [
         "动作链输入",
         "web_action_send_text",
@@ -236,7 +247,8 @@
     {
       "tag": "WebCookies",
       "display_name": "获取Cookies",
-      "description": "获取当前网页会话的 Cookie 信息 (支持 JSON / Raw / Header 格式)",
+      "icon": "🍪",
+      "description": "获取当前网页的所有 Cookie 登录凭据信息",
       "keywords": [
         "获取Cookie",
         "web_cookies",
@@ -266,7 +278,8 @@
     {
       "tag": "WebElementAttribute",
       "display_name": "获取元素属性",
-      "description": "获取指定网页 DOM 元素的属性值 (如 value, href, src, innerText 等)",
+      "icon": "🏷️",
+      "description": "读取网页元素的链接网址、文本、图片地址或其它属性值",
       "keywords": [
         "获取属性",
         "web_attribute",
@@ -291,7 +304,8 @@
     {
       "tag": "WebElementClear",
       "display_name": "清空输入框",
-      "description": "清空指定网页文本输入框或文本域的内容",
+      "icon": "🧹",
+      "description": "清空网页输入框或文本域中已有的文字内容",
       "keywords": [
         "清空输入框",
         "web_clear",
@@ -310,7 +324,8 @@
     {
       "tag": "WebElementClick",
       "display_name": "点击网页元素",
-      "description": "通过拟人化事件分发或直接点击指定的网页 DOM 元素",
+      "icon": "🖱️",
+      "description": "自动点击网页上的按钮、链接或选项元素",
       "keywords": [
         "点击元素",
         "web_click",
@@ -329,7 +344,8 @@
     {
       "tag": "WebElementSelected",
       "display_name": "元素是否选中",
-      "description": "判断指定的网页单选框 (Radio) 或复选框 (Checkbox) 是否处于选中状态",
+      "icon": "☑️",
+      "description": "检查网页上的单选框或多选框当前是否已被勾选",
       "keywords": [
         "是否选中",
         "web_selected",
@@ -349,7 +365,8 @@
     {
       "tag": "WebElementSendKey",
       "display_name": "发送按键",
-      "description": "向指定的网页元素发送特殊按键序列 (如 Enter, Tab, Escape 等)",
+      "icon": "🔤",
+      "description": "向网页元素发送回车键 (Enter)、Tab 键或 Esc 退出键等特殊按键",
       "keywords": [
         "发送按键",
         "web_send_key",
@@ -373,7 +390,8 @@
     {
       "tag": "WebElementSendText",
       "display_name": "输入文本",
-      "description": "向指定的网页输入框/文本域模拟拟人化击键或极速注入文本内容",
+      "icon": "⌨️",
+      "description": "向网页输入框中自动打字输入文本内容",
       "keywords": [
         "输入文本",
         "web_send_text",
@@ -398,7 +416,8 @@
     {
       "tag": "WebElementSubmit",
       "display_name": "提交表单",
-      "description": "触发表单提交操作 (如对表单内任意输入控件执行 submit 动作)",
+      "icon": "📤",
+      "description": "提交当前所在的网页表单",
       "keywords": [
         "提交表单",
         "web_submit",
@@ -417,7 +436,8 @@
     {
       "tag": "WebExecute",
       "display_name": "执行JS脚本",
-      "description": "在当前网页上下文中执行自定义 JavaScript 代码片段并获取返回值",
+      "icon": "⚡",
+      "description": "在当前网页中执行一段自定义 JavaScript 代码并获取返回值",
       "keywords": [
         "执行JS",
         "web_execute",
@@ -442,7 +462,8 @@
     {
       "tag": "WebExtractTable",
       "display_name": "提取表格数据",
-      "description": "自动识别并提取网页 table 表格或 ul/ol 列表数据为结构化数据矩阵",
+      "icon": "📊",
+      "description": "自动提取网页中的表格或列表数据，整理为规范的数据表格",
       "keywords": [
         "提取表格",
         "web_extract_table",
@@ -467,7 +488,8 @@
     {
       "tag": "WebFocusDefaultFrame",
       "display_name": "返回主框架",
-      "description": "从嵌套 iframe 框架中跳出，返回顶层主 HTML 页面上下文",
+      "icon": "🏠",
+      "description": "从嵌套的 iframe 框架中退出，回到网页最外层主体页面",
       "keywords": [
         "返回主框架",
         "web_default_frame",
@@ -486,7 +508,8 @@
     {
       "tag": "WebGetElement",
       "display_name": "获取网页元素",
-      "description": "通过 CSS / XPath / ID / Text / Role 等智能选择器定位并获取网页 DOM 元素",
+      "icon": "🔍",
+      "description": "使用文字、ID 或选择器定位并获取网页上的特定按钮或元素",
       "keywords": [
         "获取元素",
         "web_get_element",
@@ -518,7 +541,8 @@
     {
       "tag": "WebHandleDialog",
       "display_name": "处理网页弹窗",
-      "description": "自动响应由页面 JavaScript 触发的原生 Alert / Confirm / Prompt 弹窗",
+      "icon": "💬",
+      "description": "自动点击网页弹出的 Alert 提示框或确认框 (确定或取消)",
       "keywords": [
         "处理弹窗",
         "web_handle_dialog",
@@ -549,7 +573,8 @@
     {
       "tag": "WebOpen",
       "display_name": "打开网页",
-      "description": "启动或接管浏览器并打开指定网址 (URL)",
+      "icon": "🌐",
+      "description": "打开指定的网址，或自动连接已打开的浏览器",
       "keywords": [
         "打开网页",
         "web_open",
@@ -586,7 +611,8 @@
     {
       "tag": "WebScreenshot",
       "display_name": "网页截图",
-      "description": "截取网页视口或指定 Web 元素的图像并保存为图像对象",
+      "icon": "📸",
+      "description": "截取网页可见区域或指定网页元素的截图画面",
       "keywords": [
         "网页截图",
         "web_screenshot",
@@ -606,7 +632,8 @@
     {
       "tag": "WebSwitchTab",
       "display_name": "切换标签页",
-      "description": "通过网页标题关键词或 URL 正则匹配切换当前活动的浏览器标签页 (Tab)",
+      "icon": "📑",
+      "description": "根据网页标题或网址切换到指定的浏览器标签页",
       "keywords": [
         "切换标签页",
         "web_switch_tab",
@@ -631,7 +658,8 @@
     {
       "tag": "WebSwitchToFrame",
       "display_name": "切换到框架",
-      "description": "通过索引、名称或选择器将当前上下文切换到指定的 iframe / frame 框架",
+      "icon": "🔲",
+      "description": "切换进入网页中嵌入的 iframe 子页面框架中",
       "keywords": [
         "切换框架",
         "web_switch_frame",
@@ -655,7 +683,8 @@
     {
       "tag": "WebUploadFile",
       "display_name": "静默上传文件",
-      "description": "通过浏览器底层接口向 input[type=file] 注入文件路径，绕过系统原生弹窗",
+      "icon": "📁",
+      "description": "自动向网页的文件上传按钮中填入本地文件路径，快速完成上传",
       "keywords": [
         "上传文件",
         "web_upload_file",
@@ -684,7 +713,8 @@
     {
       "tag": "WebWaitAlert",
       "display_name": "等待弹窗",
-      "description": "在指定超时时间内等待页面 JavaScript 原生 Alert/Confirm 弹窗出现",
+      "icon": "⏳",
+      "description": "等待网页弹出提示弹窗出现后再继续",
       "keywords": [
         "等待弹窗",
         "web_wait_alert",
@@ -708,7 +738,8 @@
     {
       "tag": "WebWaitClickable",
       "display_name": "等待元素可点击",
-      "description": "在指定超时时间内等待网页元素变为可见且处于可点击 (Enabled/Clickable) 状态",
+      "icon": "⏳",
+      "description": "等待网页上的某个按钮变为可点击状态",
       "keywords": [
         "等待可点击",
         "web_wait_clickable",
@@ -742,7 +773,8 @@
     {
       "tag": "WebWaitFrameAvailable",
       "display_name": "等待框架可用",
-      "description": "在指定超时时间内等待指定 iframe / frame 框架可用并自动切入",
+      "icon": "⏳",
+      "description": "等待嵌入的 iframe 框架加载完成并自动进入",
       "keywords": [
         "等待框架",
         "web_wait_frame",
@@ -776,7 +808,8 @@
     {
       "tag": "WebWaitPresence",
       "display_name": "等待元素呈现",
-      "description": "在指定超时时间内等待网页 DOM 元素呈现或消失",
+      "icon": "⏳",
+      "description": "等待指定的网页元素在页面中加载出来",
       "keywords": [
         "等待呈现",
         "web_wait_presence",
@@ -816,7 +849,8 @@
     {
       "tag": "WebWaitTitle",
       "display_name": "等待标题",
-      "description": "在指定超时时间内等待网页标题完全匹配或包含指定文本",
+      "icon": "⏳",
+      "description": "等待浏览器标题包含指定文字",
       "keywords": [
         "等待标题",
         "web_wait_title",
@@ -850,7 +884,8 @@
     {
       "tag": "WebWaitVisibilityByElement",
       "display_name": "等待元素可见(元素)",
-      "description": "在指定超时时间内等待已有网页元素句柄变为可见或隐藏",
+      "icon": "⏳",
+      "description": "等待已找到的网页元素变为可见或隐藏",
       "keywords": [
         "等待可见",
         "web_wait_visibility_element",
@@ -883,7 +918,8 @@
     {
       "tag": "WebWaitVisibilityByLocator",
       "display_name": "等待元素可见(定位符)",
-      "description": "通过选择器定位并在指定超时时间内等待网页元素可见或隐藏",
+      "icon": "⏳",
+      "description": "等待网页上的某个元素变为可见或隐藏状态",
       "keywords": [
         "等待可见",
         "web_wait_visibility",
