@@ -1,0 +1,729 @@
+{
+  "name": "웹 및 브라우저 자동화 제품군",
+  "description": "Chrome/Edge 브라우저 자동 실행, 요소 클릭, 양식 자동 입력, 테이블 데이터 추출, 팝업 처리 및 다중 탭 관리 기능 제공",
+  "group": "웹 자동화",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "액션 체인 실행",
+      "description": "드래그 앤 드롭, 단축키 입력 등 일련의 연속 웹 작업을 순차적으로 실행합니다",
+      "keywords": [
+        "액션 체인",
+        "연속 작업",
+        "드래그",
+        "제스처"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "액션 체인: 클릭",
+      "description": "연속 작업에 마우스 클릭 단계를 추가합니다",
+      "keywords": [
+        "액션 클릭",
+        "체인 클릭",
+        "마우스 클릭"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "액션 체인: 마우스 누르고 있기",
+      "description": "드래그 작업을 위해 마우스 왼쪽 버튼을 누른 채 유지합니다",
+      "keywords": [
+        "마우스 누르고 있기",
+        "클릭 유지",
+        "마우스 다운"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "액션 체인: 더블 클릭",
+      "description": "연속 작업에 마우스 더블 클릭 단계를 추가합니다",
+      "keywords": [
+        "더블 클릭",
+        "체인 더블 클릭"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "액션 체인: 드래그 앤 드롭",
+      "description": "웹 요소를 드래그하여 대상 위치나 요소에 놓습니다",
+      "keywords": [
+        "드래그 앤 드롭",
+        "슬라이더 드래그",
+        "순서 변경"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "소스 요소 / 캡처 대상",
+          "description": "드래그 시작 요소 또는 스크린샷 캡처 대상"
+        },
+        "target": {
+          "display_name": "놓기 대상",
+          "description": "드롭 대상 위치 또는 대상 요소"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "액션 체인: 키 누르기",
+      "description": "Ctrl, Shift, Alt 등의 보조 키를 누른 채 유지합니다",
+      "keywords": [
+        "키 누르기",
+        "보조 키",
+        "키 유지"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "key": {
+          "display_name": "키 이름",
+          "description": "키 코드 또는 보조 키 이름 (예: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "액션 체인: 키 놓기",
+      "description": "이전에 누르고 있던 보조 키를 해제합니다",
+      "keywords": [
+        "키 놓기",
+        "키 해제",
+        "보조 키 해제"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "key": {
+          "display_name": "키 이름",
+          "description": "키 코드 또는 보조 키 이름 (예: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "액션 체인: 마우스 이동",
+      "description": "마우스 커서를 지정한 웹 요소로 이동하여 호버 효과를 시뮬레이션합니다",
+      "keywords": [
+        "마우스 이동",
+        "호버",
+        "커서 이동"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "offset": {
+          "display_name": "오프셋 좌표",
+          "description": "요소 왼쪽 상단 기준 픽셀 오프셋 (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "액션 체인: 일시 중지",
+      "description": "지정된 밀리초 동안 대기하여 자연스러운 사용자 지연을 모방합니다",
+      "keywords": [
+        "일시 중지",
+        "대기",
+        "딜레이"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "값 / 내용",
+          "description": "입력 텍스트, JavaScript 코드, 대기 시간 또는 프레임 식별자"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "액션 체인: 마우스 놓기",
+      "description": "마우스 버튼을 해제하여 드래그 작업을 완료합니다",
+      "keywords": [
+        "마우스 놓기",
+        "마우스 업",
+        "드래그 종료"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "액션 체인: 텍스트 입력",
+      "description": "연속 작업 중에 지정된 텍스트를 입력합니다",
+      "keywords": [
+        "텍스트 입력",
+        "문자열 입력",
+        "체인 입력"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "텍스트 내용",
+          "description": "입력하거나 일치시킬 텍스트 문자열"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "쿠키 가져오기",
+      "description": "현재 웹페이지 세션에서 쿠키 정보를 검색합니다",
+      "keywords": [
+        "쿠키 가져오기",
+        "Cookie",
+        "세션 쿠키"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "내보내기 형식",
+          "description": "쿠키 데이터 출력 형식 (json / dict)"
+        },
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "name": {
+          "display_name": "쿠키 이름",
+          "description": "조회할 특정 쿠키 이름"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "요소 속성 가져오기",
+      "description": "웹 요소에서 href, src, class 등 속성 값을 읽습니다",
+      "keywords": [
+        "속성 가져오기",
+        "요소 속성",
+        "href",
+        "src"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "attribute": {
+          "display_name": "속성 이름",
+          "description": "읽을 HTML 요소 속성 이름 (예: href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "입력란 지우기",
+      "description": "웹 입력란 또는 텍스트 영역의 기존 텍스트를 지웁니다",
+      "keywords": [
+        "입력란 지우기",
+        "텍스트 삭제",
+        "초기화"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "웹 요소 클릭",
+      "description": "버튼, 링크 등 웹 요소를 자동으로 클릭합니다",
+      "keywords": [
+        "요소 클릭",
+        "버튼 클릭",
+        "링크 클릭"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "요소 선택 여부 확인",
+      "description": "체크박스 또는 라디오 버튼이 선택되어 있는지 확인합니다",
+      "keywords": [
+        "선택 여부",
+        "체크 상태",
+        "라디오 상태"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "키 전송",
+      "description": "Enter, Tab, Esc 등 특수 키를 웹 요소에 전송합니다",
+      "keywords": [
+        "키 전송",
+        "엔터 키",
+        "특수 키"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "key": {
+          "display_name": "키 이름",
+          "description": "키 코드 또는 보조 키 이름 (예: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "텍스트 입력",
+      "description": "입력란에 텍스트를 자동으로 입력합니다",
+      "keywords": [
+        "텍스트 입력",
+        "문자 입력",
+        "양식 작성"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "value": {
+          "display_name": "값 / 내용",
+          "description": "입력 텍스트, JavaScript 코드, 대기 시간 또는 프레임 식별자"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "폼 제출",
+      "description": "웹 요소가 포함된 HTML 양식을 제출합니다",
+      "keywords": [
+        "폼 제출",
+        "양식 전송",
+        "서브밋"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "JavaScript 실행",
+      "description": "현재 페이지에서 JavaScript를 실행하고 반환값을 가져옵니다",
+      "keywords": [
+        "자바스크립트 실행",
+        "JS 실행",
+        "스크립트"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "value": {
+          "display_name": "값 / 내용",
+          "description": "입력 텍스트, JavaScript 코드, 대기 시간 또는 프레임 식별자"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "테이블 데이터 추출",
+      "description": "웹페이지의 표 또는 목록 데이터를 구조화된 테이블로 추출합니다",
+      "keywords": [
+        "테이블 추출",
+        "표 추출",
+        "데이터 스크래핑"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "기본 프레임으로 복귀",
+      "description": "중첩된 iframe에서 벗어나 최상위 페이지로 포커스를 전환합니다",
+      "keywords": [
+        "기본 프레임",
+        "메인 프레임",
+        "iframe 종료"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "웹 요소 찾기",
+      "description": "ID, CSS, XPath 선택자를 사용하여 웹 요소를 검색하고 가져옵니다",
+      "keywords": [
+        "요소 찾기",
+        "요소 검색",
+        "선택자",
+        "XPath"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "by": {
+          "display_name": "선택자 전략",
+          "description": "요소 검색 전략 (예: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "대화상자 처리",
+      "description": "Alert, Confirm 등 브라우저 팝업 대화상자를 확인 또는 취소합니다",
+      "keywords": [
+        "대화상자 처리",
+        "팝업 처리",
+        "알림창"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "accept": {
+          "display_name": "확인 또는 취소",
+          "description": "대화상자 확인 또는 취소 여부 (true: 확인, false: 취소)"
+        },
+        "prompt_text": {
+          "display_name": "프롬프트 입력 텍스트",
+          "description": "프롬프트 대화상자에 입력할 텍스트 (선택 사항)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "웹페이지 열기",
+      "description": "지정된 URL로 이동하거나 실행 중인 브라우저에 연결합니다",
+      "keywords": [
+        "웹페이지 열기",
+        "브라우저 실행",
+        "URL 이동"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "대상 URL",
+          "description": "열거나 이동할 대상 웹페이지 URL"
+        },
+        "user_data_folder": {
+          "display_name": "사용자 데이터 폴더",
+          "description": "로그인 상태 및 확장 프로그램을 유지하기 위한 브라우저 데이터 폴더 (선택)"
+        },
+        "profile_directory": {
+          "display_name": "프로필 디렉터리",
+          "description": "브라우저 프로필 디렉터리 이름 (예: Default, Profile 1)"
+        },
+        "browser": {
+          "display_name": "브라우저 유형",
+          "description": "브라우저 유형 또는 실행 파일 (예: Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "웹페이지 스크린샷",
+      "description": "웹페이지 화면 또는 특정 웹 요소의 스크린샷을 캡처합니다",
+      "keywords": [
+        "스크린샷",
+        "웹 캡처",
+        "화면 캡처"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "소스 요소 / 캡처 대상",
+          "description": "드래그 시작 요소 또는 스크린샷 캡처 대상"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "탭 전환",
+      "description": "제목 또는 URL 일치 조건에 따라 브라우저 탭을 전환합니다",
+      "keywords": [
+        "탭 전환",
+        "탭 변경",
+        "브라우저 탭"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "title_or_url": {
+          "display_name": "제목 또는 URL 일치",
+          "description": "전환할 탭의 제목 키워드 또는 URL 표현식"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "프레임으로 전환",
+      "description": "웹페이지에 포함된 iframe 하위 프레임으로 포커스를 전환합니다",
+      "keywords": [
+        "프레임 전환",
+        "iframe 전환",
+        "하위 프레임"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "value": {
+          "display_name": "값 / 내용",
+          "description": "입력 텍스트, JavaScript 코드, 대기 시간 또는 프레임 식별자"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "자동 파일 업로드",
+      "description": "웹 파일 업로드 요소에 로컬 파일 경로를 전달하여 업로드합니다",
+      "keywords": [
+        "파일 업로드",
+        "파일 첨부",
+        "자동 업로드"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "file_path": {
+          "display_name": "업로드 파일 경로",
+          "description": "업로드할 로컬 파일의 전체 경로"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "알림창 대기",
+      "description": "JavaScript 경고 또는 확인 팝업 대화상자가 나타날 때까지 대기합니다",
+      "keywords": [
+        "알림창 대기",
+        "대화상자 대기",
+        "경고창"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "클릭 가능할 때까지 대기",
+      "description": "대상 웹 요소가 화면에 표시되고 클릭 가능해질 때까지 대기합니다",
+      "keywords": [
+        "클릭 가능 대기",
+        "버튼 활성화 대기",
+        "요소 대기"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "by": {
+          "display_name": "선택자 전략",
+          "description": "요소 검색 전략 (예: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "프레임 사용 가능 대기",
+      "description": "iframe 프레임이 준비될 때까지 대기한 후 자동으로 전환합니다",
+      "keywords": [
+        "프레임 대기",
+        "iframe 준비 대기",
+        "프레임 로드"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "by": {
+          "display_name": "선택자 전략",
+          "description": "요소 검색 전략 (예: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "요소 로드 대기",
+      "description": "지정된 웹 요소가 DOM 트리에 로드될 때까지 대기합니다",
+      "keywords": [
+        "요소 로드 대기",
+        "DOM 대기",
+        "요소 존재"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "by": {
+          "display_name": "선택자 전략",
+          "description": "요소 검색 전략 (예: id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "매칭 모드",
+          "description": "단일 또는 모든 요소 매칭: first (첫 번째) 또는 all (모두)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "페이지 제목 대기",
+      "description": "브라우저 제목이 지정된 텍스트와 일치하거나 포함될 때까지 대기합니다",
+      "keywords": [
+        "제목 대기",
+        "페이지 제목",
+        "제목 일치"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "text": {
+          "display_name": "텍스트 내용",
+          "description": "입력하거나 일치시킬 텍스트 문자열"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "method": {
+          "display_name": "일치 방식",
+          "description": "제목 일치 방식: contains (포함), exact (정확히 일치), regex (정규식)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "요소 가시성 대기(요소)",
+      "description": "웹 요소가 화면에 표시되거나 숨겨질 때까지 대기합니다",
+      "keywords": [
+        "가시성 대기",
+        "요소 표시 대기",
+        "숨김 대기"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "visibility": {
+          "display_name": "표시 여부 상태",
+          "description": "기대하는 표시 상태: visible (표시됨) 또는 hidden (숨김)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "가시성 대기(선택자)",
+      "description": "선택자와 일치하는 웹 요소가 표시되거나 숨겨질 때까지 대기합니다",
+      "keywords": [
+        "선택자 가시성 대기",
+        "요소 표시 대기",
+        "가시성 확인"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "브라우저 드라이버",
+          "description": "브라우저 세션 또는 드라이버 인스턴스"
+        },
+        "element": {
+          "display_name": "대상 요소",
+          "description": "웹 요소 핸들 또는 선택자 일치 표현식"
+        },
+        "timeout": {
+          "display_name": "타임아웃 (초)",
+          "description": "조건이 충족될 때까지 대기할 최대 초"
+        },
+        "by": {
+          "display_name": "선택자 전략",
+          "description": "요소 검색 전략 (예: id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "표시 여부 상태",
+          "description": "기대하는 표시 상태: visible (표시됨) 또는 hidden (숨김)"
+        },
+        "mode": {
+          "display_name": "매칭 모드",
+          "description": "단일 또는 모든 요소 매칭: first (첫 번째) 또는 all (모두)"
+        }
+      }
+    }
+  }
+}

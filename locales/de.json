@@ -1,0 +1,730 @@
+{
+  "name": "Web- und Browser-Automatisierungssuite",
+  "description": "Bietet automatische Navigation in Chrome/Edge, Klicks auf Webelemente, Formularausfüllung, Tabellenextraktion, Dialogbehandlung und Tab-Verwaltung",
+  "group": "Web-Automatisierung",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "Aktionskette ausführen",
+      "description": "Führt eine Reihe aufeinanderfolgender Browseraktionen wie Drag & Drop oder Tastenkombinationen aus",
+      "keywords": [
+        "aktionskette",
+        "action chains",
+        "gesten",
+        "sequenz"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "Aktionskette: Klicken",
+      "description": "Fügt der Aktionskette einen Mausklick hinzu",
+      "keywords": [
+        "aktionskette klick",
+        "chain click",
+        "mausklick"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "Aktionskette: Maus gedrückt halten",
+      "description": "Hält die linke Maustaste für Ziehvorgänge gedrückt",
+      "keywords": [
+        "maus gedrückt halten",
+        "click and hold",
+        "taste halten"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "Aktionskette: Doppelklick",
+      "description": "Fügt der Aktionskette einen Doppelklick hinzu",
+      "keywords": [
+        "doppelklick",
+        "chain double click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "Aktionskette: Drag & Drop",
+      "description": "Zieht ein Web-Element und legt es auf dem Ziel ab",
+      "keywords": [
+        "drag and drop",
+        "ziehen und ablegen",
+        "schieberegler"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Quell-Element / Bildquelle",
+          "description": "Ausgangselement für Drag-Vorgang oder Screenshot-Quelle"
+        },
+        "target": {
+          "display_name": "Ablageziel",
+          "description": "Zielposition oder Zielelement für den Ablegevorgang"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "Aktionskette: Taste drücken",
+      "description": "Hält eine Zusatztaste wie Strg, Umschalt oder Alt gedrückt",
+      "keywords": [
+        "taste drücken",
+        "key down",
+        "modifikatortaste"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "key": {
+          "display_name": "Tastenname",
+          "description": "Tastencode oder Modifikatortaste (z. B. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "Aktionskette: Taste loslassen",
+      "description": "Lässt eine zuvor gedrückte Taste wieder los",
+      "keywords": [
+        "taste loslassen",
+        "key up",
+        "taste freigeben"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "key": {
+          "display_name": "Tastenname",
+          "description": "Tastencode oder Modifikatortaste (z. B. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "Aktionskette: Maus bewegen",
+      "description": "Bewegt den Mauszeiger über ein Web-Element für Hover-Effekte",
+      "keywords": [
+        "maus bewegen",
+        "hover",
+        "zeiger bewegen"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "offset": {
+          "display_name": "Versatzkoordinaten",
+          "description": "Pixel-Versatz relativ zur oberen linken Ecke des Elements (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "Aktionskette: Pause",
+      "description": "Pausiert für angegebene Millisekunden zur Simulation natürlicher Verzögerung",
+      "keywords": [
+        "pause",
+        "verzögerung",
+        "wartezeit"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "Wert / Inhalt",
+          "description": "Eingabetext, auszuführender JavaScript-Code, Wartezeit oder Frame-Name"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "Aktionskette: Maustaste loslassen",
+      "description": "Lässt die Maustaste los, um den Ziehvorgang abzuschließen",
+      "keywords": [
+        "maustaste loslassen",
+        "mouse up",
+        "ziehen beenden"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "Aktionskette: Text eingeben",
+      "description": "Gibt eine Zeichenfolge in der Aktionskette ein",
+      "keywords": [
+        "text eingeben",
+        "tastatureingabe",
+        "tippen"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "Textinhalt",
+          "description": "Einzugebender oder abzugleichender Text"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "Cookies abrufen",
+      "description": "Ruft Browser-Cookies der aktuellen Seitensitzung ab",
+      "keywords": [
+        "cookies abrufen",
+        "browser cookies",
+        "sitzungscookies"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "Exportformat",
+          "description": "Ausgabeformat für Cookie-Daten (json / dict)"
+        },
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "name": {
+          "display_name": "Cookie-Name",
+          "description": "Name des spezifischen abzufragenden Cookies"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "Elementattribut abrufen",
+      "description": "Liest Attributwerte wie href, src oder class eines Elements aus",
+      "keywords": [
+        "elementattribut",
+        "attribut abrufen",
+        "href",
+        "src"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "attribute": {
+          "display_name": "Attributname",
+          "description": "Name des HTML-Attributs (z. B. href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "Eingabefeld leeren",
+      "description": "Löscht den gesamten Text in einem Eingabefeld",
+      "keywords": [
+        "feld leeren",
+        "eingabe löschen",
+        "text löschen"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "Web-Element anklicken",
+      "description": "Klickt auf eine Schaltfläche, einen Link oder ein Web-Element",
+      "keywords": [
+        "element anklicken",
+        "button klicken",
+        "web klick"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "Element ausgewählt?",
+      "description": "Prüft, ob ein Kontrollkästchen oder Optionsfeld aktiviert ist",
+      "keywords": [
+        "ist ausgewählt",
+        "checkbox status",
+        "markiert"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "Taste senden",
+      "description": "Sendet Sondertasten wie Eingabe, Tabulator oder Esc an das Element",
+      "keywords": [
+        "taste senden",
+        "eingabetaste",
+        "sondertaste"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "key": {
+          "display_name": "Tastenname",
+          "description": "Tastencode oder Modifikatortaste (z. B. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "Text eintippen",
+      "description": "Tippt Text automatisch in ein Eingabefeld ein",
+      "keywords": [
+        "text eingeben",
+        "feld ausfüllen",
+        "tippen"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "value": {
+          "display_name": "Wert / Inhalt",
+          "description": "Eingabetext, auszuführender JavaScript-Code, Wartezeit oder Frame-Name"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "Formular absenden",
+      "description": "Sendet das zugehörige HTML-Formular ab",
+      "keywords": [
+        "formular absenden",
+        "submit",
+        "formular senden"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "JavaScript ausführen",
+      "description": "Führt benutzerdefinierten JavaScript-Code aus und gibt das Ergebnis zurück",
+      "keywords": [
+        "javascript ausführen",
+        "js ausführen",
+        "skript"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "value": {
+          "display_name": "Wert / Inhalt",
+          "description": "Eingabetext, auszuführender JavaScript-Code, Wartezeit oder Frame-Name"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "Tabelle extrahieren",
+      "description": "Extrahiert Tabellendaten von Webseiten in eine strukturierte Tabelle",
+      "keywords": [
+        "tabelle extrahieren",
+        "tabellendaten",
+        "daten abrufen"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "Zum Standard-Frame wechseln",
+      "description": "Verlässt verschachtelte iFrames und wechselt zur Hauptseite zurück",
+      "keywords": [
+        "standard-frame",
+        "iframe verlassen",
+        "hauptseite"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "Web-Element suchen",
+      "description": "Sucht und erfasst ein Web-Element anhand von ID, CSS oder XPath",
+      "keywords": [
+        "element suchen",
+        "element finden",
+        "xpath",
+        "css"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "by": {
+          "display_name": "Suchstrategie",
+          "description": "Strategie zur Elementlokalisierung (z. B. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "Dialogfenster behandeln",
+      "description": "Bestätigt oder schließt JavaScript-Alerts, Bestätigungen oder Prompts",
+      "keywords": [
+        "dialog behandeln",
+        "alert",
+        "bestätigung",
+        "popup"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "accept": {
+          "display_name": "Bestätigen oder Abbrechen",
+          "description": "Dialog bestätigen oder abbrechen (true: Bestätigen, false: Abbrechen)"
+        },
+        "prompt_text": {
+          "display_name": "Prompt-Eingabetext",
+          "description": "In das Prompt-Eingabefeld einzugebender Text (optional)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "Webseite öffnen",
+      "description": "Öffnet eine URL oder verbindet sich mit einem bestehenden Browser",
+      "keywords": [
+        "webseite öffnen",
+        "browser starten",
+        "url aufrufen"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "Ziel-URL",
+          "description": "Zu öffnende oder anzusteuernde Webseiten-URL"
+        },
+        "user_data_folder": {
+          "display_name": "Benutzerdaten-Ordner",
+          "description": "Pfad zum Browser-Benutzerdatenordner zur Beibehaltung von Sitzungen (optional)"
+        },
+        "profile_directory": {
+          "display_name": "Profil-Verzeichnis",
+          "description": "Name des Browser-Profilordners (z. B. Default oder Profile 1)"
+        },
+        "browser": {
+          "display_name": "Browser-Typ",
+          "description": "Browser-Typ oder ausführbare Datei (z. B. Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "Web-Screenshot",
+      "description": "Erstellt einen Screenshot der sichtbaren Seite oder eines Elements",
+      "keywords": [
+        "web screenshot",
+        "bildschirmfoto",
+        "seite erfassen"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Quell-Element / Bildquelle",
+          "description": "Ausgangselement für Drag-Vorgang oder Screenshot-Quelle"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "Tab wechseln",
+      "description": "Wechselt zu einem Browser-Tab anhand von Titel oder URL",
+      "keywords": [
+        "tab wechseln",
+        "reiter wechseln",
+        "browser tab"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "title_or_url": {
+          "display_name": "Titel- oder URL-Muster",
+          "description": "Titel-Schlagwort oder URL des anzusteuernden Browser-Tabs"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "Zu Frame wechseln",
+      "description": "Wechselt den Fokus in einen eingebetteten iFrame",
+      "keywords": [
+        "zu frame wechseln",
+        "iframe fokus",
+        "frame umschalten"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "value": {
+          "display_name": "Wert / Inhalt",
+          "description": "Eingabetext, auszuführender JavaScript-Code, Wartezeit oder Frame-Name"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "Datei hochladen",
+      "description": "Setzt den lokalen Dateipfad im Upload-Element für stillen Upload",
+      "keywords": [
+        "datei hochladen",
+        "upload",
+        "datei anhängen"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "file_path": {
+          "display_name": "Dateipfad zum Hochladen",
+          "description": "Vollständiger lokaler Pfad der hochzuladenden Datei"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "Auf Alert warten",
+      "description": "Wartet, bis ein JavaScript-Alert oder Bestätigungsdialog erscheint",
+      "keywords": [
+        "auf alert warten",
+        "dialog abwarten",
+        "alert dialog"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "Warten bis klickbar",
+      "description": "Wartet, bis ein Element sichtbar und anklickbar ist",
+      "keywords": [
+        "warten bis klickbar",
+        "element klickbar",
+        "aktivierung"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "by": {
+          "display_name": "Suchstrategie",
+          "description": "Strategie zur Elementlokalisierung (z. B. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "Warten bis Frame bereit",
+      "description": "Wartet, bis der iFrame verfügbar ist, und wechselt zu ihm",
+      "keywords": [
+        "frame bereit",
+        "iframe abwarten",
+        "warten auf frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "by": {
+          "display_name": "Suchstrategie",
+          "description": "Strategie zur Elementlokalisierung (z. B. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "Warten auf Element",
+      "description": "Wartet, bis das angegebene Element im DOM-Baum vorhanden ist",
+      "keywords": [
+        "warten auf element",
+        "element vorhanden",
+        "dom abwarten"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "by": {
+          "display_name": "Suchstrategie",
+          "description": "Strategie zur Elementlokalisierung (z. B. id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "Übereinstimmungsmodus",
+          "description": "Einzelnes oder alle Elemente abgleichen: first (erstes) oder all (alle)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "Auf Titel warten",
+      "description": "Wartet, bis der Seitentitel mit dem erwarteten Text übereinstimmt",
+      "keywords": [
+        "auf titel warten",
+        "seitentitel abwarten",
+        "titel prüfen"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "text": {
+          "display_name": "Textinhalt",
+          "description": "Einzugebender oder abzugleichender Text"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "method": {
+          "display_name": "Vergleichsmethode",
+          "description": "Titel-Vergleichsmethode: contains (enthält), exact (exakt) oder regex (Regulärer Ausdruck)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "Element-Sichtbarkeit abwarten",
+      "description": "Wartet, bis das Element sichtbar oder ausgeblendet ist",
+      "keywords": [
+        "sichtbarkeit abwarten",
+        "element sichtbar",
+        "element verborgen"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "visibility": {
+          "display_name": "Erwartete Sichtbarkeit",
+          "description": "Erwarteter Sichtbarkeitsstatus: visible (sichtbar) oder hidden (ausgeblendet)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "Sichtbarkeit nach Locator abwarten",
+      "description": "Wartet, bis das per Locator definierte Element sichtbar ist",
+      "keywords": [
+        "sichtbarkeit nach locator",
+        "locator sichtbar",
+        "anzeige abwarten"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser-Treiber",
+          "description": "Browser-Sitzung oder Treiber-Instanz"
+        },
+        "element": {
+          "display_name": "Ziel-Element",
+          "description": "Web-Element-Handle oder Selektor-Ausdruck"
+        },
+        "timeout": {
+          "display_name": "Zeitüberschreitung (Sekunden)",
+          "description": "Maximale Wartezeit in Sekunden, bis die Bedingung erfüllt ist"
+        },
+        "by": {
+          "display_name": "Suchstrategie",
+          "description": "Strategie zur Elementlokalisierung (z. B. id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "Erwartete Sichtbarkeit",
+          "description": "Erwarteter Sichtbarkeitsstatus: visible (sichtbar) oder hidden (ausgeblendet)"
+        },
+        "mode": {
+          "display_name": "Übereinstimmungsmodus",
+          "description": "Einzelnes oder alle Elemente abgleichen: first (erstes) oder all (alle)"
+        }
+      }
+    }
+  }
+}

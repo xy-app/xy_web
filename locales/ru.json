@@ -1,0 +1,732 @@
+{
+  "name": "Пакет автоматизации веб-страниц и браузера",
+  "description": "Предоставляет автоматический запуск Chrome/Edge, клики по элементам, заполнение форм, извлечение таблиц, обработку диалогов и управление вкладками",
+  "group": "Веб-автоматизация",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "Выполнить цепочку действий",
+      "description": "Последовательно выполняет цепочку действий: перетаскивание, сочетания клавиш и жесты",
+      "keywords": [
+        "цепочка действий",
+        "action chains",
+        "жесты",
+        "последовательность"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "Цепочка действий: клик",
+      "description": "Добавить клик мыши в цепочку действий",
+      "keywords": [
+        "клик цепочки",
+        "chain click",
+        "клик мыши"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "Цепочка действий: зажать мышь",
+      "description": "Зажать кнопку мыши в цепочке действий для перетаскивания",
+      "keywords": [
+        "зажать мышь",
+        "click and hold",
+        "нажать и удерживать"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "Цепочка действий: двойной клик",
+      "description": "Добавить двойной клик мыши в цепочку действий",
+      "keywords": [
+        "двойной клик",
+        "double click",
+        "дабл клик"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "Цепочка действий: перетаскивание",
+      "description": "Перетащить веб-элемент и отпустить в целевую позицию",
+      "keywords": [
+        "перетаскивание",
+        "drag and drop",
+        "слайдер"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Исходный элемент / Экран",
+          "description": "Исходный элемент для перетаскивания или источник снимка"
+        },
+        "target": {
+          "display_name": "Цель сброса",
+          "description": "Целевая позиция или элемент для сброса"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "Цепочка действий: зажать клавишу",
+      "description": "Зажать клавишу-модификатор, например Ctrl, Shift или Alt",
+      "keywords": [
+        "зажать клавишу",
+        "key down",
+        "модификатор"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "key": {
+          "display_name": "Клавиша",
+          "description": "Код клавиши или имя модификатора (например, Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "Цепочка действий: отпустить клавишу",
+      "description": "Отпустить ранее зажатую клавишу-модификатор",
+      "keywords": [
+        "отпустить клавишу",
+        "key up",
+        "освободить клавишу"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "key": {
+          "display_name": "Клавиша",
+          "description": "Код клавиши или имя модификатора (например, Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "Цепочка действий: переместить мышь",
+      "description": "Переместить курсор мыши на веб-элемент для имитации наведения",
+      "keywords": [
+        "переместить мышь",
+        "hover",
+        "наведение"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "offset": {
+          "display_name": "Смещение координат",
+          "description": "Смещение в пикселях от верхнего левого угла элемента (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "Цепочка действий: пауза",
+      "description": "Приостановить выполнение на указанное количество миллисекунд",
+      "keywords": [
+        "пауза",
+        "задержка",
+        "pause ms"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "Значение / Содержимое",
+          "description": "Вводимый текст, тело JavaScript-скрипта, время ожидания или ID фрейма"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "Цепочка действий: отпустить мышь",
+      "description": "Отпустить кнопку мыши для завершения перетаскивания",
+      "keywords": [
+        "отпустить мышь",
+        "mouse up",
+        "завершить перетаскивание"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "Цепочка действий: ввести текст",
+      "description": "Ввести заданный текст в цепочке действий",
+      "keywords": [
+        "ввести текст",
+        "набор текста",
+        "send text"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "Текстовое содержимое",
+          "description": "Текстовая строка для ввода или сопоставления"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "Получить Cookies",
+      "description": "Получить файлы cookie из текущего сеанса страницы",
+      "keywords": [
+        "получить куки",
+        "cookies",
+        "файлы cookie",
+        "сессия"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "Формат экспорта",
+          "description": "Формат вывода файлов cookie (json / dict)"
+        },
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "name": {
+          "display_name": "Имя Cookie",
+          "description": "Имя конкретного файла cookie для поиска"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "Получить атрибут элемента",
+      "description": "Считывает значение атрибута элемента, например href или src",
+      "keywords": [
+        "атрибут элемента",
+        "get attribute",
+        "href",
+        "src"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "attribute": {
+          "display_name": "Имя атрибута",
+          "description": "Имя HTML-атрибута элемента (например, href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "Очистить поле ввода",
+      "description": "Очищает текст в поле ввода или текстовой области",
+      "keywords": [
+        "очистить поле",
+        "стереть текст",
+        "clear input"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "Кликнуть веб-элемент",
+      "description": "Кликнуть по кнопке, ссылке или элементу страницы",
+      "keywords": [
+        "кликнуть элемент",
+        "клик по кнопке",
+        "web click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "Проверить выбор элемента",
+      "description": "Проверяет, отмечен ли флажок или радиокнопка",
+      "keywords": [
+        "выбран ли элемент",
+        "проверить чекбокс",
+        "is selected"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "Отправить клавишу",
+      "description": "Отправляет специальные клавиши, такие как Enter или Tab",
+      "keywords": [
+        "отправить клавишу",
+        "нажать enter",
+        "send key"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "key": {
+          "display_name": "Клавиша",
+          "description": "Код клавиши или имя модификатора (например, Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "Ввести текст",
+      "description": "Вводит текст в поле ввода или редактируемый элемент",
+      "keywords": [
+        "ввести текст",
+        "набрать текст",
+        "заполнить поле"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "value": {
+          "display_name": "Значение / Содержимое",
+          "description": "Вводимый текст, тело JavaScript-скрипта, время ожидания или ID фрейма"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "Отправить форму",
+      "description": "Отправляет HTML-форму веб-страницы",
+      "keywords": [
+        "отправить форму",
+        "submit form",
+        "сабмит формы"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "Выполнить JavaScript",
+      "description": "Выполняет произвольный скрипт JavaScript на веб-странице",
+      "keywords": [
+        "выполнить js",
+        "javascript",
+        "скрипт js"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "value": {
+          "display_name": "Значение / Содержимое",
+          "description": "Вводимый текст, тело JavaScript-скрипта, время ожидания или ID фрейма"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "Извлечь таблицу",
+      "description": "Извлекает табличные данные со страницы в структурированный вид",
+      "keywords": [
+        "извлечь таблицу",
+        "парсинг таблицы",
+        "табличные данные"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "Вернуться в основной фрейм",
+      "description": "Выйти из iframe и переключиться на страницу верхнего уровня",
+      "keywords": [
+        "основной фрейм",
+        "выйти из iframe",
+        "default frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "Найти веб-элемент",
+      "description": "Поиск и получение веб-элемента по ID, CSS или XPath",
+      "keywords": [
+        "найти элемент",
+        "поиск элемента",
+        "xpath",
+        "селектор"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "by": {
+          "display_name": "Стратегия локатора",
+          "description": "Стратегия поиска элемента (например, id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "Обработать диалог",
+      "description": "Принять или закрыть диалоговое окно Alert, Confirm или Prompt",
+      "keywords": [
+        "обработать диалог",
+        "alert",
+        "confirm",
+        "всплывающее окно"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "accept": {
+          "display_name": "Принять или отклонить",
+          "description": "Принять или отклонить диалог (true: OK, false: Отмена)"
+        },
+        "prompt_text": {
+          "display_name": "Текст ввода в диалог",
+          "description": "Текст для ввода в поле диалогового окна Prompt (необязательно)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "Открыть веб-страницу",
+      "description": "Открыть указанный URL-адрес или подключиться к браузеру",
+      "keywords": [
+        "открыть страницу",
+        "перейти по ссылке",
+        "открыть браузер"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "Целевой URL",
+          "description": "URL веб-страницы для открытия или перехода"
+        },
+        "user_data_folder": {
+          "display_name": "Папка данных пользователя",
+          "description": "Путь к папке данных браузера для сохранения сессий (необязательно)"
+        },
+        "profile_directory": {
+          "display_name": "Каталог профиля",
+          "description": "Имя каталога профиля браузера (например, Default или Profile 1)"
+        },
+        "browser": {
+          "display_name": "Тип браузера",
+          "description": "Тип браузера или имя исполняемого файла (например, Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "Скриншот страницы",
+      "description": "Делает снимок видимой области страницы или отдельного элемента",
+      "keywords": [
+        "скриншот страницы",
+        "снимок экрана",
+        "web screenshot"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Исходный элемент / Экран",
+          "description": "Исходный элемент для перетаскивания или источник снимка"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "Переключить вкладку",
+      "description": "Переключает на вкладку по заголовку или URL-адресу",
+      "keywords": [
+        "переключить вкладку",
+        "сменить вкладку",
+        "switch tab"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "title_or_url": {
+          "display_name": "Заголовок или URL",
+          "description": "Ключевое слово заголовка или URL для переключения на вкладку"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "Переключиться на фрейм",
+      "description": "Переключает фокус драйвера на встроенный iframe",
+      "keywords": [
+        "переключить фрейм",
+        "войти в iframe",
+        "switch frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "value": {
+          "display_name": "Значение / Содержимое",
+          "description": "Вводимый текст, тело JavaScript-скрипта, время ожидания или ID фрейма"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "Загрузить файл",
+      "description": "Автоматически передает путь к файлу в элемент загрузки",
+      "keywords": [
+        "загрузить файл",
+        "upload file",
+        "прикрепить файл"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "file_path": {
+          "display_name": "Путь к файлу",
+          "description": "Полный путь к локальному файлу для загрузки"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "Ожидать диалог",
+      "description": "Ожидать появления всплывающего окна JavaScript на странице",
+      "keywords": [
+        "ожидать alert",
+        "ждать диалог",
+        "всплывающее окно"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "Ожидать кликабельности",
+      "description": "Ожидать, пока веб-элемент станет видимым и доступным для клика",
+      "keywords": [
+        "ожидать клика",
+        "wait clickable",
+        "доступен для клика"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "by": {
+          "display_name": "Стратегия локатора",
+          "description": "Стратегия поиска элемента (например, id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "Ожидать готовности фрейма",
+      "description": "Ожидать загрузки iframe и автоматически переключиться на него",
+      "keywords": [
+        "ждать фрейм",
+        "ожидать iframe",
+        "frame available"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "by": {
+          "display_name": "Стратегия локатора",
+          "description": "Стратегия поиска элемента (например, id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "Ожидать появления элемента",
+      "description": "Ожидать, пока веб-элемент появится в DOM-дереве",
+      "keywords": [
+        "ожидать появления",
+        "присутствие в dom",
+        "wait presence"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "by": {
+          "display_name": "Стратегия локатора",
+          "description": "Стратегия поиска элемента (например, id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "Режим сопоставления",
+          "description": "Поиск одного или всех элементов: first (первый) или all (все)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "Ожидать заголовок",
+      "description": "Ожидать, пока заголовок страницы не совпадет с ожидаемым текстом",
+      "keywords": [
+        "ожидать заголовок",
+        "заголовок страницы",
+        "wait title"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "text": {
+          "display_name": "Текстовое содержимое",
+          "description": "Текстовая строка для ввода или сопоставления"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "method": {
+          "display_name": "Метод сопоставления",
+          "description": "Метод проверки заголовка: contains (содержит), exact (точно), regex (регулярное выражение)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "Ожидать видимости элемента",
+      "description": "Ожидать, пока заданный элемент станет видимым или скрытым",
+      "keywords": [
+        "видимость элемента",
+        "ожидать отображения",
+        "скрытие элемента"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "visibility": {
+          "display_name": "Ожидаемая видимость",
+          "description": "Ожидаемое состояние видимости: visible (видимый) или hidden (скрытый)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "Ожидать видимость по локатору",
+      "description": "Ожидать, пока элемент по локатору станет видимым или скрытым",
+      "keywords": [
+        "видимость по локатору",
+        "ожидать отображения",
+        "локатор"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Драйвер браузера",
+          "description": "Сессия браузера или объект драйвера"
+        },
+        "element": {
+          "display_name": "Целевой элемент",
+          "description": "Дескриптор веб-элемента или селектор"
+        },
+        "timeout": {
+          "display_name": "Таймаут (сек)",
+          "description": "Максимальное время ожидания выполнения условия в секундах"
+        },
+        "by": {
+          "display_name": "Стратегия локатора",
+          "description": "Стратегия поиска элемента (например, id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "Ожидаемая видимость",
+          "description": "Ожидаемое состояние видимости: visible (видимый) или hidden (скрытый)"
+        },
+        "mode": {
+          "display_name": "Режим сопоставления",
+          "description": "Поиск одного или всех элементов: first (первый) или all (все)"
+        }
+      }
+    }
+  }
+}

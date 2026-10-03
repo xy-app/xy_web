@@ -3,7 +3,7 @@
 [![Plugin Version](https://img.shields.io/badge/version-0.50.5-blue.svg)](manifest.json)
 [![Group](https://img.shields.io/badge/group-Web-cyan.svg)](#)
 [![Platform](https://img.shields.io/badge/platform-All-green.svg)](#)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](#)
+[![License](https://img.shields.io/badge/license-Freeware-brightgreen.svg)](#)
 
 官方原生现代浏览器与网页自动化交互套件。专为高并发 Web RPA 机器人、数据采集、表单批量录入及端到端自动化测试打造。提供免沉重依赖的浏览器启动与接管、全能 DOM 元素智能拾取、复合鼠标键盘拟人化动作链 (ActionChains)、智能动态显式等待 (Explicit Waits)、表格/列表结构化抓取、无弹窗静默文件上传、嵌套 iframe 上下文穿透及脚本注入执行等全链路能力。
 
@@ -198,4 +198,4 @@ WebActionChainsPerform (按序批量回放上述动作)
 
 ## 📄 许可证 (License)
 
-本项目遵循 [MIT License](LICENSE) 开源协议。
+本插件遵循免费专有许可协议 (Freeware)。供 小友+ 用户免费下载与使用，未经官方书面授权，严禁对二进制文件进行逆向工程、反编译或二次打包转售。

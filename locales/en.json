@@ -1,0 +1,754 @@
+{
+  "name": "Web & Browser Automation Suite",
+  "description": "Provides automated Chrome/Edge navigation, element clicking, form filling, table extraction, dialog handling, and tab management",
+  "group": "Web Automation",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "Perform Action Chains",
+      "description": "Execute a sequential chain of browser actions such as drag-and-drop, key combos, or gestures",
+      "keywords": [
+        "perform action chains",
+        "action chains",
+        "gesture",
+        "sequence"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "Action Chains: Click",
+      "description": "Add a mouse click step into the action sequence",
+      "keywords": [
+        "action click",
+        "chain click",
+        "mouse click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "Action Chains: Click & Hold",
+      "description": "Press and hold mouse button in the action sequence for drag or gestures",
+      "keywords": [
+        "click and hold",
+        "press and hold",
+        "mouse down"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "Action Chains: Double Click",
+      "description": "Add a mouse double click step into the action sequence",
+      "keywords": [
+        "action double click",
+        "chain double click",
+        "double click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "Action Chains: Drag & Drop",
+      "description": "Drag a web element and drop it onto target position or element",
+      "keywords": [
+        "drag and drop",
+        "drag drop",
+        "slider drag",
+        "reorder"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Source Element / View",
+          "description": "Source element for dragging or viewport target for screenshot"
+        },
+        "target": {
+          "display_name": "Drop Target",
+          "description": "Target position or destination element for drop operation"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "Action Chains: Key Down",
+      "description": "Press and hold a modifier key like Ctrl, Shift, or Alt in the sequence",
+      "keywords": [
+        "key down",
+        "modifier key",
+        "hold key"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "key": {
+          "display_name": "Key Name",
+          "description": "Key code or modifier key name (e.g. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "Action Chains: Key Up",
+      "description": "Release a previously held modifier key in the sequence",
+      "keywords": [
+        "key up",
+        "release key",
+        "unhold key"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "key": {
+          "display_name": "Key Name",
+          "description": "Key code or modifier key name (e.g. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "Action Chains: Move To",
+      "description": "Move mouse cursor over a web element to simulate hovering",
+      "keywords": [
+        "move to",
+        "hover",
+        "mouse hover",
+        "move cursor"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "offset": {
+          "display_name": "Offset Coordinates",
+          "description": "Pixel offset relative to element top-left (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "Action Chains: Pause",
+      "description": "Pause execution for specified milliseconds to simulate natural user delay",
+      "keywords": [
+        "pause",
+        "action pause",
+        "delay ms",
+        "wait"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "Value / Content",
+          "description": "Input text, JavaScript script body, wait time, or frame identifier"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "Action Chains: Release Mouse",
+      "description": "Release held mouse button to complete drag operation",
+      "keywords": [
+        "release mouse",
+        "mouse up",
+        "end drag"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "Action Chains: Send Text",
+      "description": "Type a sequence of text characters in the action chain",
+      "keywords": [
+        "action send text",
+        "chain type text",
+        "action typing"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "Text Content",
+          "description": "Text string to type or match against"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "Get Cookies",
+      "description": "Retrieve browser cookies from the current page session",
+      "keywords": [
+        "get cookies",
+        "cookies",
+        "session cookie",
+        "browser cookies"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "Export Format",
+          "description": "Output format for cookies data (json / dict)"
+        },
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "name": {
+          "display_name": "Cookie Name",
+          "description": "Specific cookie name to look up"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "Get Element Attribute",
+      "description": "Read an attribute value like href, src, or class from a web element",
+      "keywords": [
+        "get attribute",
+        "element attribute",
+        "href",
+        "src"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "attribute": {
+          "display_name": "Attribute Name",
+          "description": "HTML element attribute name to read (e.g. href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "Clear Input",
+      "description": "Clear all existing text inside a web input field or textarea",
+      "keywords": [
+        "clear input",
+        "clear text",
+        "empty field",
+        "reset input"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "Click Web Element",
+      "description": "Click on a web button, link, or clickable element",
+      "keywords": [
+        "click element",
+        "web click",
+        "button click",
+        "press element"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "Is Element Selected",
+      "description": "Check whether a checkbox or radio button is currently checked",
+      "keywords": [
+        "is selected",
+        "is checked",
+        "checkbox state",
+        "radio state"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "Send Key",
+      "description": "Send special keyboard keys like Enter, Tab, or Escape to an element",
+      "keywords": [
+        "send key",
+        "press key",
+        "enter key",
+        "tab key"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "key": {
+          "display_name": "Key Name",
+          "description": "Key code or modifier key name (e.g. Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "Type Text",
+      "description": "Type text string into an input field or editable element",
+      "keywords": [
+        "type text",
+        "send text",
+        "input text",
+        "fill field"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "value": {
+          "display_name": "Value / Content",
+          "description": "Input text, JavaScript script body, wait time, or frame identifier"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "Submit Form",
+      "description": "Submit the HTML form enclosing the web element",
+      "keywords": [
+        "submit form",
+        "form submit",
+        "send form"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "Execute JavaScript",
+      "description": "Execute custom JavaScript in current page context and return result",
+      "keywords": [
+        "execute javascript",
+        "run js",
+        "eval js",
+        "script"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "value": {
+          "display_name": "Value / Content",
+          "description": "Input text, JavaScript script body, wait time, or frame identifier"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "Extract Table Data",
+      "description": "Extract table or list rows from web page into structured data table",
+      "keywords": [
+        "extract table",
+        "scrape table",
+        "table data",
+        "grid"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "Switch to Default Frame",
+      "description": "Exit nested iframe and switch focus back to top-level page",
+      "keywords": [
+        "default frame",
+        "exit iframe",
+        "top frame",
+        "main page"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "Find Web Element",
+      "description": "Locate and retrieve a web element using ID, CSS, or XPath locator",
+      "keywords": [
+        "find element",
+        "get element",
+        "locator",
+        "xpath",
+        "css selector"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "by": {
+          "display_name": "Locator Strategy",
+          "description": "Element location strategy (e.g. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "Handle JavaScript Dialog",
+      "description": "Accept or dismiss browser Alert, Confirm, or Prompt dialogs",
+      "keywords": [
+        "handle dialog",
+        "alert dialog",
+        "confirm dialog",
+        "prompt dialog"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "accept": {
+          "display_name": "Accept / Dismiss",
+          "description": "Whether to accept or dismiss dialog (true: accept, false: dismiss)"
+        },
+        "prompt_text": {
+          "display_name": "Prompt Text",
+          "description": "Text to type into the prompt dialog input field (optional)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "Open Webpage",
+      "description": "Navigate to specified URL or attach to existing browser instance",
+      "keywords": [
+        "open webpage",
+        "browse url",
+        "open browser",
+        "navigate"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "Target URL",
+          "description": "Webpage URL to open or navigate to"
+        },
+        "user_data_folder": {
+          "display_name": "User Data Folder",
+          "description": "Browser user data directory path for session and extension persistence"
+        },
+        "profile_directory": {
+          "display_name": "Profile Directory",
+          "description": "Browser profile directory name (e.g. Default or Profile 1)"
+        },
+        "browser": {
+          "display_name": "Browser Type",
+          "description": "Browser type or executable name (e.g. Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "Webpage Screenshot",
+      "description": "Capture screenshot of the visible viewport or a specific web element",
+      "keywords": [
+        "screenshot",
+        "web screenshot",
+        "capture page",
+        "element capture"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Source Element / View",
+          "description": "Source element for dragging or viewport target for screenshot"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "Switch Tab",
+      "description": "Switch to browser tab matching specified title keyword or URL",
+      "keywords": [
+        "switch tab",
+        "change tab",
+        "activate tab",
+        "browser tab"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "title_or_url": {
+          "display_name": "Title or URL Match",
+          "description": "Tab title keyword or URL expression to switch to"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "Switch to Frame",
+      "description": "Switch driver focus into a nested iframe or sub-frame",
+      "keywords": [
+        "switch frame",
+        "switch iframe",
+        "enter iframe",
+        "focus frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "value": {
+          "display_name": "Value / Content",
+          "description": "Input text, JavaScript script body, wait time, or frame identifier"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "Upload File",
+      "description": "Silently set local file path to web upload input to trigger file upload",
+      "keywords": [
+        "upload file",
+        "file upload",
+        "choose file",
+        "attach file"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "file_path": {
+          "display_name": "Upload File Path",
+          "description": "Full path to the local file to upload"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "Wait for Alert",
+      "description": "Wait until a JavaScript alert, confirm, or prompt dialog appears",
+      "keywords": [
+        "wait alert",
+        "wait dialog",
+        "alert present",
+        "expect alert"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "Wait Element Clickable",
+      "description": "Wait until target web element becomes visible and enabled to click",
+      "keywords": [
+        "wait clickable",
+        "wait element click",
+        "element enabled"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "by": {
+          "display_name": "Locator Strategy",
+          "description": "Element location strategy (e.g. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "Wait Frame Available",
+      "description": "Wait until the nested iframe is available and switch to it",
+      "keywords": [
+        "wait frame",
+        "wait iframe",
+        "frame available",
+        "iframe ready"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "by": {
+          "display_name": "Locator Strategy",
+          "description": "Element location strategy (e.g. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "Wait Element Presence",
+      "description": "Wait until specified element is attached to DOM tree",
+      "keywords": [
+        "wait presence",
+        "element present",
+        "wait dom",
+        "element exists"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "by": {
+          "display_name": "Locator Strategy",
+          "description": "Element location strategy (e.g. id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "Match Mode",
+          "description": "Match single or multiple elements: first or all"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "Wait Page Title",
+      "description": "Wait until browser window title matches or contains expected text",
+      "keywords": [
+        "wait title",
+        "title contains",
+        "match title",
+        "page title"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "text": {
+          "display_name": "Text Content",
+          "description": "Text string to type or match against"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "method": {
+          "display_name": "Match Method",
+          "description": "Title matching method: contains, exact, or regex"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "Wait Element Visibility",
+      "description": "Wait until given web element reference becomes visible or hidden",
+      "keywords": [
+        "wait visibility",
+        "element visible",
+        "element hidden",
+        "wait display"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "visibility": {
+          "display_name": "Expected Visibility",
+          "description": "Expected visibility state: visible or hidden"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "Wait Visibility by Locator",
+      "description": "Wait until element matching locator becomes visible or hidden",
+      "keywords": [
+        "wait locator visible",
+        "visibility by locator",
+        "wait element display"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Browser Driver",
+          "description": "Browser session or driver instance handle"
+        },
+        "element": {
+          "display_name": "Target Element",
+          "description": "Web element handle or selector matching expression"
+        },
+        "timeout": {
+          "display_name": "Timeout (Seconds)",
+          "description": "Maximum timeout duration in seconds to wait for the condition"
+        },
+        "by": {
+          "display_name": "Locator Strategy",
+          "description": "Element location strategy (e.g. id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "Expected Visibility",
+          "description": "Expected visibility state: visible or hidden"
+        },
+        "mode": {
+          "display_name": "Match Mode",
+          "description": "Match single or multiple elements: first or all"
+        }
+      }
+    }
+  }
+}

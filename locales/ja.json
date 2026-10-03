@@ -1,0 +1,728 @@
+{
+  "name": "Web＆ブラウザ自動化スイート",
+  "description": "Chrome/Edgeブラウザの自動起動、要素クリック、フォーム自動入力、テーブル抽出、ダイアログ処理、複数タブ管理などを提供します",
+  "group": "ウェブ自動化",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "アクションチェーン実行",
+      "description": "ドラッグ＆ドロップ、キーボードショートカットなど一連の連続ブラウザ操作を順次実行します",
+      "keywords": [
+        "アクションチェーン",
+        "連続操作",
+        "ドラッグ",
+        "ジェスチャー"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "アクションチェーン: クリック",
+      "description": "連続アクションにマウスクリックを追加します",
+      "keywords": [
+        "アクションクリック",
+        "チェーンクリック",
+        "マウスクリック"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "アクションチェーン: マウス長押し",
+      "description": "ドラッグ操作のためにマウスの左ボタンを押したままにします",
+      "keywords": [
+        "マウス長押し",
+        "クリック長押し",
+        "マウスダウン"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "アクションチェーン: ダブルクリック",
+      "description": "連続アクションにマウスダブルクリックを追加します",
+      "keywords": [
+        "ダブルクリック",
+        "チェーンダブルクリック"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "アクションチェーン: ドラッグ＆ドロップ",
+      "description": "Web要素をドラッグしてターゲット位置または要素にドロップします",
+      "keywords": [
+        "ドラッグ＆ドロップ",
+        "スライダードラッグ",
+        "並べ替え"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "ソース要素 / キャプチャ元",
+          "description": "ドラッグ元の要素またはスクリーンショット対象"
+        },
+        "target": {
+          "display_name": "ドロップ先",
+          "description": "ドラッグ先のターゲット位置または要素"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "アクションチェーン: キー押下",
+      "description": "Ctrl、Shift、Altなどのキーを押したままにします",
+      "keywords": [
+        "キー押下",
+        "修飾キー",
+        "キー長押し"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "key": {
+          "display_name": "キー名",
+          "description": "キーコードまたは修飾キー名 (例: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "アクションチェーン: キー解放",
+      "description": "押していた修飾キーを離します",
+      "keywords": [
+        "キー解放",
+        "キーを離す",
+        "修飾キー解除"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "key": {
+          "display_name": "キー名",
+          "description": "キーコードまたは修飾キー名 (例: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "アクションチェーン: マウス移動",
+      "description": "カーソルを指定のWeb要素上に移動しホバー効果をシミュレートします",
+      "keywords": [
+        "マウス移動",
+        "ホバー",
+        "カーソル移動"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "offset": {
+          "display_name": "オフセット座標",
+          "description": "要素の左上からのピクセルオフセット (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "アクションチェーン: 一時停止",
+      "description": "指定ミリ秒待機し、自然な人間の操作遅延を再現します",
+      "keywords": [
+        "一時停止",
+        "待機",
+        "ディレイ"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "値 / コンテンツ",
+          "description": "入力文字列、実行するJavaScriptコード、待機時間またはフレーム識別子"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "アクションチェーン: マウスボタン解放",
+      "description": "押されていたマウスボタンを離し、ドラッグを完了します",
+      "keywords": [
+        "マウスボタン解放",
+        "マウスアップ",
+        "ドラッグ終了"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "アクションチェーン: テキスト入力",
+      "description": "アクションチェーン内で文字列を入力します",
+      "keywords": [
+        "テキスト入力",
+        "文字入力",
+        "チェーン入力"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "テキスト内容",
+          "description": "入力または照合するテキスト文字列"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "Cookie取得",
+      "description": "現在のWebページセッションからCookie情報を取得します",
+      "keywords": [
+        "クッキー取得",
+        "Cookie",
+        "セッション情報"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "エクスポート形式",
+          "description": "Cookieデータの出力形式 (json / dict)"
+        },
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "name": {
+          "display_name": "Cookie名",
+          "description": "検索または取得する特定のCookie名"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "要素属性の取得",
+      "description": "Web要素からhref、src、classなどの属性値を読み取ります",
+      "keywords": [
+        "属性取得",
+        "href取得",
+        "要素プロパティ"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "attribute": {
+          "display_name": "属性名",
+          "description": "読み取るHTML属性名 (例: href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "入力欄をクリア",
+      "description": "Web入力欄やテキストエリアの既存文字列を消去します",
+      "keywords": [
+        "入力クリア",
+        "テキスト消去",
+        "入力欄リセット"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "Web要素をクリック",
+      "description": "ボタン、リンク、チェックボックスなどのWeb要素をクリックします",
+      "keywords": [
+        "要素クリック",
+        "ボタンクリック",
+        "リンククリック"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "要素が選択中か確認",
+      "description": "チェックボックスまたはラジオボタンが選択されているか確認します",
+      "keywords": [
+        "選択確認",
+        "チェック状態",
+        "ラジオボタン"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "キーを送信",
+      "description": "Enter、Tab、Escapeなどの特殊キーをWeb要素に送信します",
+      "keywords": [
+        "キー送信",
+        "Enterキー",
+        "特殊キー"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "key": {
+          "display_name": "キー名",
+          "description": "キーコードまたは修飾キー名 (例: Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "テキストを入力",
+      "description": "入力フィールドに文字列を自動タイピング入力します",
+      "keywords": [
+        "テキスト入力",
+        "文字入力",
+        "フォーム入力"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "value": {
+          "display_name": "値 / コンテンツ",
+          "description": "入力文字列、実行するJavaScriptコード、待機時間またはフレーム識別子"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "フォームを送信",
+      "description": "対象のWeb要素が属するHTMLフォームを送信します",
+      "keywords": [
+        "フォーム送信",
+        "送信",
+        "Submit"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "JavaScript実行",
+      "description": "ページ内で任意のJavaScriptコードを実行し結果を取得します",
+      "keywords": [
+        "JavaScript実行",
+        "JS実行",
+        "スクリプト評価"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "value": {
+          "display_name": "値 / コンテンツ",
+          "description": "入力文字列、実行するJavaScriptコード、待機時間またはフレーム識別子"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "表データを抽出",
+      "description": "Webページ内のテーブルやリストを抽出し構造化データに変換します",
+      "keywords": [
+        "表抽出",
+        "テーブル抽出",
+        "スクレイピング"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "デフォルトフレームに戻る",
+      "description": "iframeの入れ子から抜け、最上位のメインページに戻ります",
+      "keywords": [
+        "デフォルトフレーム",
+        "メインフレーム",
+        "iframe脱出"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "Web要素を検索・取得",
+      "description": "ID、CSS、XPathなどを用いてWeb要素を検索・取得します",
+      "keywords": [
+        "要素検索",
+        "要素取得",
+        "セレクタ",
+        "XPath"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "by": {
+          "display_name": "ロケータ戦略",
+          "description": "要素の検索戦略 (例: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "ダイアログ処理",
+      "description": "Alert、Confirm、PromptなどのJavaScriptダイアログに応答します",
+      "keywords": [
+        "ダイアログ処理",
+        "アラート処理",
+        "ポップアップ"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "accept": {
+          "display_name": "承認または却下",
+          "description": "ダイアログを承認するか却下するか (true: OK/承認, false: キャンセル/却下)"
+        },
+        "prompt_text": {
+          "display_name": "プロンプト入力テキスト",
+          "description": "プロンプトダイアログに入力するテキスト (任意)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "Webページを開く",
+      "description": "指定されたURLを開くか、既存のブラウザに接続します",
+      "keywords": [
+        "ページを開く",
+        "ブラウザ起動",
+        "URL開く"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "対象URL",
+          "description": "開くまたは遷移するWebページのURL"
+        },
+        "user_data_folder": {
+          "display_name": "ユーザーデータフォルダ",
+          "description": "セッションや拡張機能を保持するためのブラウザデータフォルダ (任意)"
+        },
+        "profile_directory": {
+          "display_name": "プロファイルディレクトリ",
+          "description": "ブラウザプロファイルディレクトリ名 (例: Default, Profile 1)"
+        },
+        "browser": {
+          "display_name": "ブラウザの種類",
+          "description": "ブラウザ種別または実行可能ファイル (例: Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "Webページスクリーンショット",
+      "description": "ページの表示領域または特定要素のスクリーンショットを撮影します",
+      "keywords": [
+        "スクリーンショット",
+        "ページキャプチャ",
+        "画面キャプチャ"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "ソース要素 / キャプチャ元",
+          "description": "ドラッグ元の要素またはスクリーンショット対象"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "タブを切り替え",
+      "description": "タイトルまたはURLの一致によりブラウザタブを切り替えます",
+      "keywords": [
+        "タブ切り替え",
+        "タブ選択",
+        "ブラウザタブ"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "title_or_url": {
+          "display_name": "タイトルまたはURL一致",
+          "description": "切り替えるタブのタイトルキーワードまたはURL"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "フレームに切り替え",
+      "description": "ページ内に埋め込まれたiframeサブフレームにフォーカスを切り替えます",
+      "keywords": [
+        "フレーム切り替え",
+        "iframe切り替え",
+        "サブフレーム"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "value": {
+          "display_name": "値 / コンテンツ",
+          "description": "入力文字列、実行するJavaScriptコード、待機時間またはフレーム識別子"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "ファイルをサイレントアップロード",
+      "description": "ファイル選択フォームにローカルファイルパスを入力してアップロードします",
+      "keywords": [
+        "ファイルアップロード",
+        "ファイル添付",
+        "自動アップロード"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "file_path": {
+          "display_name": "アップロードファイルパス",
+          "description": "アップロードするローカルファイルのフルパス"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "アラート待機",
+      "description": "JavaScriptのアラートダイアログが表示されるまで待機します",
+      "keywords": [
+        "アラート待機",
+        "ダイアログ待機",
+        "ポップアップ待機"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "クリック可能になるまで待機",
+      "description": "対象のWeb要素が表示されクリック可能になるまで待機します",
+      "keywords": [
+        "クリック可能待機",
+        "ボタン有効待機",
+        "操作可能"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "by": {
+          "display_name": "ロケータ戦略",
+          "description": "要素の検索戦略 (例: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "フレーム利用可能まで待機",
+      "description": "iframeが利用可能になるまで待機し、自動的に切り替えます",
+      "keywords": [
+        "フレーム待機",
+        "iframe待機",
+        "フレーム利用可能"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "by": {
+          "display_name": "ロケータ戦略",
+          "description": "要素の検索戦略 (例: id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "要素の存在を待機",
+      "description": "対象要素がDOMツリー上に読み込まれるまで待機します",
+      "keywords": [
+        "要素存在待機",
+        "DOM読み込み待機",
+        "要素生成"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "by": {
+          "display_name": "ロケータ戦略",
+          "description": "要素の検索戦略 (例: id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "一致モード",
+          "description": "単一要素か複数要素か: first (最初) または all (すべて)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "タイトル待機",
+      "description": "ブラウザのタイトルが期待する文字列に一致または含むまで待機します",
+      "keywords": [
+        "タイトル待機",
+        "タイトル一致",
+        "ページタイトル"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "text": {
+          "display_name": "テキスト内容",
+          "description": "入力または照合するテキスト文字列"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "method": {
+          "display_name": "一致方法",
+          "description": "タイトル一致方式: contains (部分一致), exact (完全一致), regex (正規表現)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "要素の可視性を待機",
+      "description": "既存のWeb要素が可視または不可視になるまで待機します",
+      "keywords": [
+        "可視性待機",
+        "要素表示待機",
+        "非表示待機"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "visibility": {
+          "display_name": "可視性状態",
+          "description": "期待する可視状態: visible (可視) または hidden (非表示)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "ロケータによる可視性待機",
+      "description": "指定ロケータに一致する要素が表示または非表示になるまで待機します",
+      "keywords": [
+        "ロケータ可視性",
+        "要素表示待機",
+        "セレクタ表示"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "ブラウザドライバ",
+          "description": "ブラウザセッションまたはドライバオブジェクト"
+        },
+        "element": {
+          "display_name": "対象要素",
+          "description": "Web要素ハンドルまたはセレクタ一致式"
+        },
+        "timeout": {
+          "display_name": "タイムアウト (秒)",
+          "description": "条件が満たされるまでの最大待機秒数"
+        },
+        "by": {
+          "display_name": "ロケータ戦略",
+          "description": "要素の検索戦略 (例: id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "可視性状態",
+          "description": "期待する可視状態: visible (可視) または hidden (非表示)"
+        },
+        "mode": {
+          "display_name": "一致モード",
+          "description": "単一要素か複数要素か: first (最初) または all (すべて)"
+        }
+      }
+    }
+  }
+}

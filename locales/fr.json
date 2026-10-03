@@ -1,0 +1,729 @@
+{
+  "name": "Suite d'automatisation Web et Navigateur",
+  "description": "Fournit la navigation automatisée sur Chrome/Edge, le clic sur les éléments, le remplissage de formulaires, l'extraction de tableaux et la gestion des onglets",
+  "group": "Automatisation Web",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "Exécuter la chaîne d'actions",
+      "description": "Exécute une séquence d'actions de navigation telles que glisser-déposer ou raccourcis clavier",
+      "keywords": [
+        "chaîne d'actions",
+        "action chains",
+        "gestes",
+        "séquence"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "Chaîne d'actions : Clic",
+      "description": "Ajoute un clic de souris dans la séquence d'actions",
+      "keywords": [
+        "clic chaîne",
+        "chain click",
+        "clic souris"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "Chaîne d'actions : Maintenir le clic",
+      "description": "Maintient le bouton gauche de la souris enfoncé pour un glissement",
+      "keywords": [
+        "maintenir clic",
+        "click and hold",
+        "bouton enfoncé"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "Chaîne d'actions : Double-clic",
+      "description": "Ajoute un double-clic de souris dans la séquence d'actions",
+      "keywords": [
+        "double clic",
+        "chain double click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "Chaîne d'actions : Glisser-déposer",
+      "description": "Glisse un élément Web et le dépose sur la cible",
+      "keywords": [
+        "glisser déposer",
+        "drag and drop",
+        "curseur"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Élément source / Écran",
+          "description": "Élément source pour le glissement ou source de capture d'écran"
+        },
+        "target": {
+          "display_name": "Cible de dépôt",
+          "description": "Position ou élément cible pour le dépôt"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "Chaîne d'actions : Touche enfoncée",
+      "description": "Maintient enfoncée une touche telle que Ctrl, Maj ou Alt",
+      "keywords": [
+        "touche enfoncée",
+        "key down",
+        "modificateur"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "key": {
+          "display_name": "Nom de la touche",
+          "description": "Code de touche ou touche de contrôle (ex. Entrée, Maj, Ctrl)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "Chaîne d'actions : Relâcher la touche",
+      "description": "Relâche une touche de contrôle précédemment enfoncée",
+      "keywords": [
+        "relâcher touche",
+        "key up",
+        "libérer touche"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "key": {
+          "display_name": "Nom de la touche",
+          "description": "Code de touche ou touche de contrôle (ex. Entrée, Maj, Ctrl)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "Chaîne d'actions : Déplacer la souris",
+      "description": "Déplace le curseur de la souris sur un élément Web pour simuler le survol",
+      "keywords": [
+        "déplacer souris",
+        "survol",
+        "hover"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "offset": {
+          "display_name": "Décalage de coordonnées",
+          "description": "Décalage en pixels par rapport au coin supérieur gauche (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "Chaîne d'actions : Pause",
+      "description": "Suspend l'exécution pendant un délai spécifié en millisecondes",
+      "keywords": [
+        "pause",
+        "délai",
+        "attente"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "Valeur / Contenu",
+          "description": "Texte saisi, script JavaScript, délai d'attente ou nom du cadre"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "Chaîne d'actions : Relâcher la souris",
+      "description": "Relâche le bouton de la souris pour terminer le glissement",
+      "keywords": [
+        "relâcher souris",
+        "mouse up",
+        "fin glissement"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "Chaîne d'actions : Saisir du texte",
+      "description": "Saisit du texte au cours de la chaîne d'actions",
+      "keywords": [
+        "saisir texte",
+        "taper texte",
+        "texte chaîne"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "Contenu textuel",
+          "description": "Chaîne de texte à saisir ou à faire correspondre"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "Obtenir les cookies",
+      "description": "Récupère les cookies de session de la page Web active",
+      "keywords": [
+        "obtenir cookies",
+        "cookies",
+        "session web"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "Format d'exportation",
+          "description": "Format de sortie des cookies (json / dict)"
+        },
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "name": {
+          "display_name": "Nom du cookie",
+          "description": "Nom spécifique du cookie à rechercher"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "Obtenir un attribut d'élément",
+      "description": "Lit la valeur d'un attribut tel que href ou src",
+      "keywords": [
+        "attribut élément",
+        "obtenir attribut",
+        "href",
+        "src"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "attribute": {
+          "display_name": "Nom de l'attribut",
+          "description": "Nom de l'attribut HTML à lire (ex. href, src, classe, valeur)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "Effacer le champ",
+      "description": "Efface le texte existant dans un champ de saisie Web",
+      "keywords": [
+        "effacer champ",
+        "vider champ",
+        "effacer texte"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "Cliquer sur l'élément Web",
+      "description": "Clique sur un bouton, un lien ou un élément Web",
+      "keywords": [
+        "clic élément",
+        "cliquer bouton",
+        "clic web"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "Élément sélectionné ?",
+      "description": "Vérifie si une case à cocher ou un bouton radio est coché",
+      "keywords": [
+        "élément sélectionné",
+        "case cochée",
+        "état sélection"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "Envoyer une touche",
+      "description": "Envoie des touches spéciales comme Entrée, Tab ou Échap",
+      "keywords": [
+        "envoyer touche",
+        "touche entrée",
+        "touche spéciale"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "key": {
+          "display_name": "Nom de la touche",
+          "description": "Code de touche ou touche de contrôle (ex. Entrée, Maj, Ctrl)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "Saisir du texte",
+      "description": "Tape automatiquement du texte dans un champ de saisie",
+      "keywords": [
+        "saisir texte",
+        "remplir champ",
+        "taper"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "value": {
+          "display_name": "Valeur / Contenu",
+          "description": "Texte saisi, script JavaScript, délai d'attente ou nom du cadre"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "Soumettre le formulaire",
+      "description": "Soumet le formulaire HTML contenant l'élément",
+      "keywords": [
+        "soumettre formulaire",
+        "envoyer formulaire",
+        "submit"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "Exécuter JavaScript",
+      "description": "Exécute du code JavaScript personnalisé sur la page et renvoie le résultat",
+      "keywords": [
+        "exécuter javascript",
+        "script js",
+        "évaluer js"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "value": {
+          "display_name": "Valeur / Contenu",
+          "description": "Texte saisi, script JavaScript, délai d'attente ou nom du cadre"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "Extraire le tableau",
+      "description": "Extrait les données d'un tableau Web sous forme de tableau structuré",
+      "keywords": [
+        "extraire tableau",
+        "données tabulaires",
+        "tableau"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "Revenir au cadre principal",
+      "description": "Quitte les iframes et revient au niveau principal de la page",
+      "keywords": [
+        "cadre principal",
+        "quitter iframe",
+        "page principale"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "Trouver l'élément Web",
+      "description": "Localise un élément Web à l'aide d'un sélecteur CSS, XPath ou ID",
+      "keywords": [
+        "trouver élément",
+        "localiser élément",
+        "xpath",
+        "css"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "by": {
+          "display_name": "Stratégie de localisation",
+          "description": "Stratégie de localisation d'élément (ex. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "Gérer la boîte de dialogue",
+      "description": "Accepte ou refuse les boîtes d'alerte, de confirmation ou de saisie",
+      "keywords": [
+        "gérer dialogue",
+        "boîte alerte",
+        "confirmation"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "accept": {
+          "display_name": "Accepter ou refuser",
+          "description": "Accepter ou fermer la boîte de dialogue (true: OK, false: Annuler)"
+        },
+        "prompt_text": {
+          "display_name": "Texte de saisie",
+          "description": "Texte à saisir dans la boîte de dialogue (facultatif)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "Ouvrir la page Web",
+      "description": "Ouvre l'URL spécifiée ou s'attache à un navigateur existant",
+      "keywords": [
+        "ouvrir page web",
+        "lancer navigateur",
+        "naviguer url"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "URL cible",
+          "description": "URL de la page Web à ouvrir ou vers laquelle naviguer"
+        },
+        "user_data_folder": {
+          "display_name": "Dossier de données utilisateur",
+          "description": "Chemin du répertoire de données pour conserver sessions et extensions (facultatif)"
+        },
+        "profile_directory": {
+          "display_name": "Répertoire de profil",
+          "description": "Nom du répertoire de profil (ex. Default ou Profile 1)"
+        },
+        "browser": {
+          "display_name": "Type de navigateur",
+          "description": "Type de navigateur ou exécutable (ex. Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "Capture d'écran Web",
+      "description": "Prend une capture d'écran de la zone visible ou d'un élément Web",
+      "keywords": [
+        "capture écran",
+        "screenshot web",
+        "capture page"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "Élément source / Écran",
+          "description": "Élément source pour le glissement ou source de capture d'écran"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "Changer d'onglet",
+      "description": "Bascule vers l'onglet correspondant au titre ou à l'URL spécifié",
+      "keywords": [
+        "changer onglet",
+        "basculer onglet",
+        "onglet navigateur"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "title_or_url": {
+          "display_name": "Titre ou URL correspondant",
+          "description": "Mot-clé du titre ou URL de l'onglet vers lequel basculer"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "Basculer vers le cadre",
+      "description": "Bascule le focus vers une iframe intégrée dans la page",
+      "keywords": [
+        "basculer cadre",
+        "entrer iframe",
+        "focus iframe"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "value": {
+          "display_name": "Valeur / Contenu",
+          "description": "Texte saisi, script JavaScript, délai d'attente ou nom du cadre"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "Téléverser un fichier",
+      "description": "Définit le chemin du fichier local dans le champ de téléversement",
+      "keywords": [
+        "téléverser fichier",
+        "uploader fichier",
+        "joindre fichier"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "file_path": {
+          "display_name": "Chemin du fichier à téléverser",
+          "description": "Chemin d'accès complet du fichier local à téléverser"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "Attendre l'alerte",
+      "description": "Attend l'apparition d'une boîte de dialogue JavaScript",
+      "keywords": [
+        "attendre alerte",
+        "attendre dialogue",
+        "attendre popup"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "Attendre élément cliquable",
+      "description": "Attend que l'élément soit visible et activé pour le clic",
+      "keywords": [
+        "attendre cliquable",
+        "élément cliquable",
+        "attente bouton"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "by": {
+          "display_name": "Stratégie de localisation",
+          "description": "Stratégie de localisation d'élément (ex. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "Attendre cadre disponible",
+      "description": "Attend que l'iframe soit disponible et bascule dessus",
+      "keywords": [
+        "attendre cadre",
+        "iframe disponible",
+        "attente frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "by": {
+          "display_name": "Stratégie de localisation",
+          "description": "Stratégie de localisation d'élément (ex. id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "Attendre présence d'élément",
+      "description": "Attend que l'élément spécifié soit présent dans le DOM",
+      "keywords": [
+        "attendre présence",
+        "élément présent",
+        "attente dom"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "by": {
+          "display_name": "Stratégie de localisation",
+          "description": "Stratégie de localisation d'élément (ex. id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "Mode de correspondance",
+          "description": "Faire correspondre un seul ou tous les éléments : first (premier) ou all (tous)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "Attendre le titre",
+      "description": "Attend que le titre de la page corresponde ou contienne le texte",
+      "keywords": [
+        "attendre titre",
+        "titre de page",
+        "vérifier titre"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "text": {
+          "display_name": "Contenu textuel",
+          "description": "Chaîne de texte à saisir ou à faire correspondre"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "method": {
+          "display_name": "Méthode de correspondance",
+          "description": "Méthode de correspondance du titre : contains (contient), exact ou regex"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "Attendre visibilité (Élément)",
+      "description": "Attend que l'élément Web donné devienne visible ou masqué",
+      "keywords": [
+        "attendre visibilité",
+        "élément visible",
+        "élément masqué"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "visibility": {
+          "display_name": "Visibilité attendue",
+          "description": "État de visibilité attendu : visible ou hidden (masqué)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "Attendre visibilité par sélecteur",
+      "description": "Attend que l'élément ciblé devienne visible ou masqué",
+      "keywords": [
+        "visibilité par sélecteur",
+        "attendre affichage",
+        "sélecteur visible"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "Pilote du navigateur",
+          "description": "Session du navigateur ou instance du pilote"
+        },
+        "element": {
+          "display_name": "Élément cible",
+          "description": "Descripteur de l'élément Web ou expression du sélecteur"
+        },
+        "timeout": {
+          "display_name": "Délai d'attente (secondes)",
+          "description": "Délai d'attente maximal en secondes avant expiration"
+        },
+        "by": {
+          "display_name": "Stratégie de localisation",
+          "description": "Stratégie de localisation d'élément (ex. id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "Visibilité attendue",
+          "description": "État de visibilité attendu : visible ou hidden (masqué)"
+        },
+        "mode": {
+          "display_name": "Mode de correspondance",
+          "description": "Faire correspondre un seul ou tous les éléments : first (premier) ou all (tous)"
+        }
+      }
+    }
+  }
+}

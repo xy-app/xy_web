@@ -1,0 +1,767 @@
+{
+  "name": "網頁與瀏覽器自動化套件",
+  "description": "提供自動開啟 Chrome/Edge 瀏覽器、點擊網頁元素、自動填寫表單、擷取網頁表格、處理彈窗與多分頁管理等功能",
+  "group": "網頁自動化",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "執行動作鏈",
+      "description": "按順序一次性執行滑動、按住拖曳或快捷鍵等一系列連續網頁操作",
+      "keywords": [
+        "執行動作鏈",
+        "web_action_perform",
+        "chains_perform",
+        "gesture_perform"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "動作鏈.點擊",
+      "description": "在連續動作中新增一次滑鼠點擊操作",
+      "keywords": [
+        "動作鏈點擊",
+        "web_action_click",
+        "action_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "動作鏈.按住滑鼠",
+      "description": "在連續動作中按住滑鼠左鍵不放，常用於拖曳或手勢操作",
+      "keywords": [
+        "動作鏈按住",
+        "web_action_click_hold",
+        "action_mouse_down"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "動作鏈.連點兩下",
+      "description": "在連續動作中新增一次滑鼠連點兩下操作",
+      "keywords": [
+        "動作鏈連點兩下",
+        "web_action_double_click",
+        "action_double_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "動作鏈.拖曳",
+      "description": "將網頁上的某個元素拖曳並放置到目標位置，常用於滑桿驗證碼或排序",
+      "keywords": [
+        "動作鏈拖曳",
+        "web_action_drag_drop",
+        "drag_and_drop",
+        "slider_drag"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "來源元素/畫面來源",
+          "description": "拖曳操作的起始來源元素或截圖目標來源"
+        },
+        "target": {
+          "display_name": "放置目標",
+          "description": "拖曳放置的目標位置或目標元素"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "動作鏈.按下輔助按鍵",
+      "description": "在連續動作中按住某個鍵盤控制鍵 (如 Ctrl、Shift 或 Alt)",
+      "keywords": [
+        "動作鏈按下輔助按鍵",
+        "web_action_key_down",
+        "action_key_down"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "key": {
+          "display_name": "按鍵名稱",
+          "description": "鍵盤按鍵代碼或控制鍵名稱 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "動作鏈.釋放輔助按鍵",
+      "description": "在連續動作中放開之前按住的鍵盤控制鍵",
+      "keywords": [
+        "動作鏈釋放輔助按鍵",
+        "web_action_key_up",
+        "action_key_up"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "key": {
+          "display_name": "按鍵名稱",
+          "description": "鍵盤按鍵代碼或控制鍵名稱 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "動作鏈.移動滑鼠",
+      "description": "讓滑鼠游標平滑移動到指定網頁元素上方，模擬滑鼠懸停 (Hover) 效果",
+      "keywords": [
+        "動作鏈移動",
+        "web_action_move_to",
+        "hover",
+        "mouse_move"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "offset": {
+          "display_name": "偏移座標",
+          "description": "相對元素左上角的像素偏移量 (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "動作鏈.暫停",
+      "description": "在連續動作中暫停等待指定的毫秒時間，模擬真人操作停頓",
+      "keywords": [
+        "動作鏈暫停",
+        "web_action_pause",
+        "action_pause",
+        "pause_ms"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "參數值/內容",
+          "description": "輸入文字、執行的JS指令碼、等待時間或框架名稱"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "動作鏈.釋放滑鼠",
+      "description": "在連續動作中放開滑鼠按鍵，結束拖曳操作",
+      "keywords": [
+        "動作鏈釋放",
+        "web_action_release",
+        "action_mouse_up"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "動作鏈.輸入文字",
+      "description": "在連續動作中輸入一段指定的文字",
+      "keywords": [
+        "動作鏈輸入",
+        "web_action_send_text",
+        "action_send_text"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "文字內容",
+          "description": "要輸入或比對的文字內容"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "取得Cookies",
+      "description": "取得當前網頁的所有 Cookie 登入憑證資訊",
+      "keywords": [
+        "取得Cookie",
+        "web_cookies",
+        "cookie",
+        "session_cookie",
+        "auth"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "匯出格式",
+          "description": "Cookies 資料輸出格式 (json / dict)"
+        },
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "name": {
+          "display_name": "Cookie 名稱",
+          "description": "需要查詢或取得的指定 Cookie 名稱"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "取得元素屬性",
+      "description": "讀取網頁元素的連結網址、文字、圖片位址或其他屬性值",
+      "keywords": [
+        "取得屬性",
+        "web_attribute",
+        "get_attribute",
+        "href",
+        "value"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "attribute": {
+          "display_name": "屬性名稱",
+          "description": "要讀取的 HTML 標籤屬性名稱 (如 href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "清空輸入框",
+      "description": "清空網頁輸入框或文字區域中已有的文字內容",
+      "keywords": [
+        "清空輸入框",
+        "web_clear",
+        "clear_text",
+        "empty_input"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "點擊網頁元素",
+      "description": "自動點擊網頁上的按鈕、連結或選項元素",
+      "keywords": [
+        "點擊元素",
+        "web_click",
+        "click_element",
+        "button_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "元素是否選中",
+      "description": "檢查網頁上的單選框或核取方塊當前是否已被勾選",
+      "keywords": [
+        "是否選中",
+        "web_selected",
+        "is_checked",
+        "checkbox",
+        "radio"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "傳送按鍵",
+      "description": "向網頁元素傳送 Enter、Tab 或 Esc 等特殊按鍵",
+      "keywords": [
+        "傳送按鍵",
+        "web_send_key",
+        "press_key",
+        "shortcut"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "key": {
+          "display_name": "按鍵名稱",
+          "description": "鍵盤按鍵代碼或控制鍵名稱 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "輸入文字",
+      "description": "向網頁輸入框中自動打字輸入文字內容",
+      "keywords": [
+        "輸入文字",
+        "web_send_text",
+        "type_text",
+        "input_text",
+        "fill_text"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "value": {
+          "display_name": "參數值/內容",
+          "description": "輸入文字、執行的JS指令碼、等待時間或框架名稱"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "提交表單",
+      "description": "提交當前所在的網頁表單",
+      "keywords": [
+        "提交表單",
+        "web_submit",
+        "form_submit",
+        "submit_button"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "執行JS指令碼",
+      "description": "在當前網頁中執行自訂 JavaScript 程式碼並取得傳回值",
+      "keywords": [
+        "執行JS指令碼",
+        "web_execute",
+        "javascript",
+        "evaluate",
+        "js_code"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "value": {
+          "display_name": "參數值/內容",
+          "description": "輸入文字、執行的JS指令碼、等待時間或框架名稱"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "擷取表格資料",
+      "description": "自動擷取網頁中的表格或清單資料，整理為結構化資料表",
+      "keywords": [
+        "擷取表格資料",
+        "web_extract_table",
+        "table_scrape",
+        "list_extract"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "返回主框架",
+      "description": "從嵌套的 iframe 框架中退出，回到網頁最外層主體頁面",
+      "keywords": [
+        "返回主框架",
+        "web_default_frame",
+        "top_frame",
+        "exit_iframe"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "取得網頁元素",
+      "description": "使用文字、ID 或選取器定位並取得網頁上的特定按鈕或元素",
+      "keywords": [
+        "取得網頁元素",
+        "web_get_element",
+        "find_element",
+        "locator",
+        "css",
+        "xpath"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "處理網頁彈窗",
+      "description": "自動點擊網頁彈出的 Alert 提示框或確認框 (確定或取消)",
+      "keywords": [
+        "處理網頁彈窗",
+        "web_handle_dialog",
+        "alert",
+        "confirm",
+        "prompt"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "accept": {
+          "display_name": "確認或取消",
+          "description": "是否確認彈窗 (true: 確定/接受, false: 取消/駁回)"
+        },
+        "prompt_text": {
+          "display_name": "提示方塊輸入文字",
+          "description": "向 Prompt 輸入框中填寫的文字內容 (選填)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "開啟網頁",
+      "description": "開啟指定的網址，或自動連線已開啟的瀏覽器",
+      "keywords": [
+        "開啟網頁",
+        "web_open",
+        "open_url",
+        "navigate",
+        "browser",
+        "chrome",
+        "edge"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "目標網址",
+          "description": "要開啟或導覽的目標網頁 URL 網址"
+        },
+        "user_data_folder": {
+          "display_name": "使用者資料目錄",
+          "description": "瀏覽器使用者資料資料夾路徑 (選填，用於儲存登入態與外掛程式)"
+        },
+        "profile_directory": {
+          "display_name": "設定檔目錄",
+          "description": "瀏覽器使用者設定檔名稱 (如 Default 或 Profile 1)"
+        },
+        "browser": {
+          "display_name": "瀏覽器類型",
+          "description": "目標瀏覽器類型或可執行檔 (如 Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "網頁截圖",
+      "description": "擷取網頁可見區域或指定網頁元素的畫面截圖",
+      "keywords": [
+        "網頁截圖",
+        "web_screenshot",
+        "page_screenshot",
+        "element_screenshot"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "來源元素/畫面來源",
+          "description": "拖曳操作的起始來源元素或截圖目標來源"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "切換分頁",
+      "description": "根據網頁標題或網址切換到指定的瀏覽器分頁",
+      "keywords": [
+        "切換分頁",
+        "web_switch_tab",
+        "switch_tab",
+        "new_tab"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "title_or_url": {
+          "display_name": "標題或網址比對",
+          "description": "要切換到的分頁標題關鍵字或 URL 網址"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "切換到框架",
+      "description": "切換進入網頁中內嵌的 iframe 子頁面框架中",
+      "keywords": [
+        "切換到框架",
+        "web_switch_frame",
+        "switch_iframe",
+        "enter_frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "value": {
+          "display_name": "參數值/內容",
+          "description": "輸入文字、執行的JS指令碼、等待時間或框架名稱"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "靜默上傳檔案",
+      "description": "自動向網頁的檔案上傳按鈕中填入本機檔案路徑，快速完成上傳",
+      "keywords": [
+        "靜默上傳檔案",
+        "web_upload_file",
+        "file_upload",
+        "upload_input"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "file_path": {
+          "display_name": "上傳檔案路徑",
+          "description": "需要上傳的本機檔案完整路徑"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "等待彈窗",
+      "description": "等待網頁快顯提示對話方塊出現後再繼續",
+      "keywords": [
+        "等待彈窗",
+        "web_wait_alert",
+        "wait_dialog",
+        "alert_present"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "等待元素可點擊",
+      "description": "等待網頁上的某個按鈕變為可點擊狀態",
+      "keywords": [
+        "等待可點擊",
+        "web_wait_clickable",
+        "wait_clickable",
+        "wait_enabled"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "等待框架可用",
+      "description": "等待內嵌的 iframe 框架載入完成並自動進入",
+      "keywords": [
+        "等待框架",
+        "web_wait_frame",
+        "wait_iframe",
+        "frame_available"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "等待元素呈現",
+      "description": "等待指定的網頁元素在頁面中載入出來",
+      "keywords": [
+        "等待呈現",
+        "web_wait_presence",
+        "wait_element",
+        "presence",
+        "wait_dom"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "比對模式",
+          "description": "比對單個還是全部元素: first (首個) 或 all (全部)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "等待標題",
+      "description": "等待瀏覽器標題包含指定文字",
+      "keywords": [
+        "等待標題",
+        "web_wait_title",
+        "match_title",
+        "title_contains"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "text": {
+          "display_name": "文字內容",
+          "description": "要輸入或比對的文字內容"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "method": {
+          "display_name": "比對方式",
+          "description": "標題比對方式: contains (包含), exact (精確比對), regex (正則比對)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "等待元素可見(元素)",
+      "description": "等待已找到的網頁元素變為可見或隱藏",
+      "keywords": [
+        "等待可見",
+        "web_wait_visibility_element",
+        "wait_element_visible"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "visibility": {
+          "display_name": "可見性期望",
+          "description": "期望的可見狀態: visible (可見) 或 hidden (隱藏)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "等待元素可見(定位器)",
+      "description": "等待網頁上的某個元素變為可見或隱藏狀態",
+      "keywords": [
+        "等待可見",
+        "web_wait_visibility",
+        "wait_visible",
+        "locator_visible"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "瀏覽器驅動",
+          "description": "瀏覽器工作階段或驅動程式物件"
+        },
+        "element": {
+          "display_name": "目標元素",
+          "description": "網頁元素控制代碼或選取器比對表示式"
+        },
+        "timeout": {
+          "display_name": "逾時時間 (秒)",
+          "description": "等待條件成立的最長逾時秒數"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "可見性期望",
+          "description": "期望的可見狀態: visible (可見) 或 hidden (隱藏)"
+        },
+        "mode": {
+          "display_name": "比對模式",
+          "description": "比對單個還是全部元素: first (首個) 或 all (全部)"
+        }
+      }
+    }
+  }
+}

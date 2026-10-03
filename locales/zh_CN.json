@@ -1,0 +1,768 @@
+{
+  "name": "网页与浏览器自动化套件",
+  "description": "提供自动打开 Chrome/Edge 浏览器、点击网页元素、自动填写表单、提取网页表格、处理弹窗与多标签页管理等功能",
+  "group": "网页自动化",
+  "actions": {
+    "WebActionChainsPerform": {
+      "display_name": "执行动作链",
+      "description": "按顺序一次性执行滑动、按住拖拽或快捷键等一系列连续网页操作",
+      "keywords": [
+        "执行动作链",
+        "web_action_perform",
+        "chains_perform",
+        "gesture_perform"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        }
+      }
+    },
+    "WebActionClick": {
+      "display_name": "动作链.点击",
+      "description": "在连续动作中添加一次鼠标点击操作",
+      "keywords": [
+        "动作链点击",
+        "web_action_click",
+        "action_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebActionClickHold": {
+      "display_name": "动作链.按住鼠标",
+      "description": "在连续动作中按住鼠标左键不放，常用于拖拽或手势操作",
+      "keywords": [
+        "动作链按住",
+        "web_action_click_hold",
+        "action_mouse_down"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebActionDoubleClick": {
+      "display_name": "动作链.双击",
+      "description": "在连续动作中添加一次鼠标双击操作",
+      "keywords": [
+        "动作链双击",
+        "web_action_double_click",
+        "action_double_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebActionDragDrop": {
+      "display_name": "动作链.拖拽",
+      "description": "将网页上的某个元素拖拽并放置到目标位置，常用于滑块验证码或排序",
+      "keywords": [
+        "动作链拖拽",
+        "web_action_drag_drop",
+        "drag_and_drop",
+        "slider_drag"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "源元素/画面源",
+          "description": "拖拽操作的起始源元素或截图目标源"
+        },
+        "target": {
+          "display_name": "放置目标",
+          "description": "拖拽放置的目标位置或目标元素"
+        }
+      }
+    },
+    "WebActionKeyDown": {
+      "display_name": "动作链.按下修饰键",
+      "description": "在连续动作中按住某个键盘控制键 (如 Ctrl、Shift 或 Alt)",
+      "keywords": [
+        "动作链按下键",
+        "web_action_key_down",
+        "action_key_down"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "key": {
+          "display_name": "按键名称",
+          "description": "键盘按键代码或控制键名称 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionKeyUp": {
+      "display_name": "动作链.释放修饰键",
+      "description": "在连续动作中松开之前按住的键盘控制键",
+      "keywords": [
+        "动作链释放键",
+        "web_action_key_up",
+        "action_key_up"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "key": {
+          "display_name": "按键名称",
+          "description": "键盘按键代码或控制键名称 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebActionMoveTo": {
+      "display_name": "动作链.移动鼠标",
+      "description": "让鼠标光标平滑移动到指定网页元素上方，模拟鼠标悬停 (Hover) 效果",
+      "keywords": [
+        "动作链移动",
+        "web_action_move_to",
+        "hover",
+        "mouse_move"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "offset": {
+          "display_name": "偏移坐标",
+          "description": "相对元素左上角的像素偏移量 (x, y)"
+        }
+      }
+    },
+    "WebActionPause": {
+      "display_name": "动作链.暂停",
+      "description": "在连续动作中暂停等待指定的毫秒时间，模拟真人操作停顿",
+      "keywords": [
+        "动作链暂停",
+        "web_action_pause",
+        "action_pause",
+        "pause_ms"
+      ],
+      "fields": {
+        "value": {
+          "display_name": "参数值/内容",
+          "description": "输入文字、执行的JS脚本、等待时间或框架名称"
+        }
+      }
+    },
+    "WebActionRelease": {
+      "display_name": "动作链.释放鼠标",
+      "description": "在连续动作中松开鼠标按键，结束拖拽操作",
+      "keywords": [
+        "动作链释放",
+        "web_action_release",
+        "action_mouse_up"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebActionSendText": {
+      "display_name": "动作链.输入文本",
+      "description": "在连续动作中输入一段指定的文字",
+      "keywords": [
+        "动作链输入",
+        "web_action_send_text",
+        "action_send_text"
+      ],
+      "fields": {
+        "text": {
+          "display_name": "文本内容",
+          "description": "要输入或匹配的文字内容"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebCookies": {
+      "display_name": "获取Cookies",
+      "description": "获取当前网页的所有 Cookie 登录凭据信息",
+      "keywords": [
+        "获取Cookie",
+        "web_cookies",
+        "cookie",
+        "session_cookie",
+        "auth"
+      ],
+      "fields": {
+        "format": {
+          "display_name": "导出格式",
+          "description": "Cookies 数据输出格式 (json / dict)"
+        },
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "name": {
+          "display_name": "Cookie 名称",
+          "description": "需要查询或获取的指定 Cookie 名称"
+        }
+      }
+    },
+    "WebElementAttribute": {
+      "display_name": "获取元素属性",
+      "description": "读取网页元素的链接网址、文本、图片地址或其它属性值",
+      "keywords": [
+        "获取属性",
+        "web_attribute",
+        "get_attribute",
+        "href",
+        "value"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "attribute": {
+          "display_name": "属性名称",
+          "description": "要读取的 HTML 标签属性名称 (如 href, src, class, value)"
+        }
+      }
+    },
+    "WebElementClear": {
+      "display_name": "清空输入框",
+      "description": "清空网页输入框或文本域中已有的文字内容",
+      "keywords": [
+        "清空输入框",
+        "web_clear",
+        "clear_text",
+        "empty_input"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebElementClick": {
+      "display_name": "点击网页元素",
+      "description": "自动点击网页上的按钮、链接或选项元素",
+      "keywords": [
+        "点击元素",
+        "web_click",
+        "click_element",
+        "button_click"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebElementSelected": {
+      "display_name": "元素是否选中",
+      "description": "检查网页上的单选框或多选框当前是否已被勾选",
+      "keywords": [
+        "是否选中",
+        "web_selected",
+        "is_checked",
+        "checkbox",
+        "radio"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebElementSendKey": {
+      "display_name": "发送按键",
+      "description": "向网页元素发送回车键 (Enter)、Tab 键或 Esc 退出键等特殊按键",
+      "keywords": [
+        "发送按键",
+        "web_send_key",
+        "press_key",
+        "shortcut"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "key": {
+          "display_name": "按键名称",
+          "description": "键盘按键代码或控制键名称 (如 Enter, Shift, Control)"
+        }
+      }
+    },
+    "WebElementSendText": {
+      "display_name": "输入文本",
+      "description": "向网页输入框中自动打字输入文本内容",
+      "keywords": [
+        "输入文本",
+        "web_send_text",
+        "type_text",
+        "input_text",
+        "fill_text"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "value": {
+          "display_name": "参数值/内容",
+          "description": "输入文字、执行的JS脚本、等待时间或框架名称"
+        }
+      }
+    },
+    "WebElementSubmit": {
+      "display_name": "提交表单",
+      "description": "提交当前所在的网页表单",
+      "keywords": [
+        "提交表单",
+        "web_submit",
+        "form_submit",
+        "submit_button"
+      ],
+      "fields": {
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebExecute": {
+      "display_name": "执行JS脚本",
+      "description": "在当前网页中执行一段自定义 JavaScript 代码并获取返回值",
+      "keywords": [
+        "执行JS",
+        "web_execute",
+        "javascript",
+        "evaluate",
+        "js_code"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "value": {
+          "display_name": "参数值/内容",
+          "description": "输入文字、执行的JS脚本、等待时间或框架名称"
+        }
+      }
+    },
+    "WebExtractTable": {
+      "display_name": "提取表格数据",
+      "description": "自动提取网页中的表格或列表数据，整理为规范的数据表格",
+      "keywords": [
+        "提取表格",
+        "web_extract_table",
+        "table_scrape",
+        "list_extract",
+        "data_scraping"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        }
+      }
+    },
+    "WebFocusDefaultFrame": {
+      "display_name": "返回主框架",
+      "description": "从嵌套的 iframe 框架中退出，回到网页最外层主体页面",
+      "keywords": [
+        "返回主框架",
+        "web_default_frame",
+        "top_frame",
+        "exit_iframe"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        }
+      }
+    },
+    "WebGetElement": {
+      "display_name": "获取网页元素",
+      "description": "使用文字、ID 或选择器定位并获取网页上的特定按钮或元素",
+      "keywords": [
+        "获取元素",
+        "web_get_element",
+        "find_element",
+        "locator",
+        "css",
+        "xpath"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebHandleDialog": {
+      "display_name": "处理网页弹窗",
+      "description": "自动点击网页弹出的 Alert 提示框或确认框 (确定或取消)",
+      "keywords": [
+        "处理弹窗",
+        "web_handle_dialog",
+        "alert",
+        "confirm",
+        "prompt"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "accept": {
+          "display_name": "确认或取消",
+          "description": "是否确认弹窗 (true: 确定/接受, false: 取消/驳回)"
+        },
+        "prompt_text": {
+          "display_name": "提示框输入文本",
+          "description": "向 Prompt 输入框中填写的文本内容 (可选)"
+        }
+      }
+    },
+    "WebOpen": {
+      "display_name": "打开网页",
+      "description": "打开指定的网址，或自动连接已打开的浏览器",
+      "keywords": [
+        "打开网页",
+        "web_open",
+        "open_url",
+        "navigate",
+        "browser",
+        "chrome",
+        "edge"
+      ],
+      "fields": {
+        "url": {
+          "display_name": "目标网址",
+          "description": "要打开或导航的目标网页 URL 网址"
+        },
+        "user_data_folder": {
+          "display_name": "用户数据目录",
+          "description": "浏览器用户数据文件夹路径 (可选，用于保存登录态与插件)"
+        },
+        "profile_directory": {
+          "display_name": "配置文件目录",
+          "description": "浏览器用户配置文件名称 (如 Default 或 Profile 1)"
+        },
+        "browser": {
+          "display_name": "浏览器类型",
+          "description": "目标浏览器类型或可执行文件 (如 Chrome, Edge, Firefox)"
+        }
+      }
+    },
+    "WebScreenshot": {
+      "display_name": "网页截图",
+      "description": "截取网页可见区域或指定网页元素的截图画面",
+      "keywords": [
+        "网页截图",
+        "web_screenshot",
+        "page_screenshot",
+        "element_screenshot"
+      ],
+      "fields": {
+        "source": {
+          "display_name": "源元素/画面源",
+          "description": "拖拽操作的起始源元素或截图目标源"
+        }
+      }
+    },
+    "WebSwitchTab": {
+      "display_name": "切换标签页",
+      "description": "根据网页标题或网址切换到指定的浏览器标签页",
+      "keywords": [
+        "切换标签页",
+        "web_switch_tab",
+        "switch_tab",
+        "new_tab"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "title_or_url": {
+          "display_name": "标题或网址匹配",
+          "description": "要切换到的标签页标题关键字或 URL 网址"
+        }
+      }
+    },
+    "WebSwitchToFrame": {
+      "display_name": "切换到框架",
+      "description": "切换进入网页中嵌入的 iframe 子页面框架中",
+      "keywords": [
+        "切换框架",
+        "web_switch_frame",
+        "switch_iframe",
+        "enter_frame"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "value": {
+          "display_name": "参数值/内容",
+          "description": "输入文字、执行的JS脚本、等待时间或框架名称"
+        }
+      }
+    },
+    "WebUploadFile": {
+      "display_name": "静默上传文件",
+      "description": "自动向网页的文件上传按钮中填入本地文件路径，快速完成上传",
+      "keywords": [
+        "上传文件",
+        "web_upload_file",
+        "file_upload",
+        "upload_input"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "file_path": {
+          "display_name": "上传文件路径",
+          "description": "需要上传的本地文件完整路径"
+        }
+      }
+    },
+    "WebWaitAlert": {
+      "display_name": "等待弹窗",
+      "description": "等待网页弹出提示弹窗出现后再继续",
+      "keywords": [
+        "等待弹窗",
+        "web_wait_alert",
+        "wait_dialog",
+        "alert_present"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        }
+      }
+    },
+    "WebWaitClickable": {
+      "display_name": "等待元素可点击",
+      "description": "等待网页上的某个按钮变为可点击状态",
+      "keywords": [
+        "等待可点击",
+        "web_wait_clickable",
+        "wait_clickable",
+        "wait_enabled"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitFrameAvailable": {
+      "display_name": "等待框架可用",
+      "description": "等待嵌入的 iframe 框架加载完成并自动进入",
+      "keywords": [
+        "等待框架",
+        "web_wait_frame",
+        "wait_iframe",
+        "frame_available"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        }
+      }
+    },
+    "WebWaitPresence": {
+      "display_name": "等待元素呈现",
+      "description": "等待指定的网页元素在页面中加载出来",
+      "keywords": [
+        "等待呈现",
+        "web_wait_presence",
+        "wait_element",
+        "presence",
+        "wait_dom"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        },
+        "mode": {
+          "display_name": "匹配模式",
+          "description": "匹配单个还是全部元素: first (首个) 或 all (全部)"
+        }
+      }
+    },
+    "WebWaitTitle": {
+      "display_name": "等待标题",
+      "description": "等待浏览器标题包含指定文字",
+      "keywords": [
+        "等待标题",
+        "web_wait_title",
+        "match_title",
+        "title_contains"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "text": {
+          "display_name": "文本内容",
+          "description": "要输入或匹配的文字内容"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "method": {
+          "display_name": "匹配方式",
+          "description": "标题匹配方式: contains (包含), exact (精确匹配), regex (正则匹配)"
+        }
+      }
+    },
+    "WebWaitVisibilityByElement": {
+      "display_name": "等待元素可见(元素)",
+      "description": "等待已找到的网页元素变为可见或隐藏",
+      "keywords": [
+        "等待可见",
+        "web_wait_visibility_element",
+        "wait_element_visible"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "visibility": {
+          "display_name": "可见性期望",
+          "description": "期望的可见状态: visible (可见) 或 hidden (隐藏)"
+        }
+      }
+    },
+    "WebWaitVisibilityByLocator": {
+      "display_name": "等待元素可见(定位符)",
+      "description": "等待网页上的某个元素变为可见或隐藏状态",
+      "keywords": [
+        "等待可见",
+        "web_wait_visibility",
+        "wait_visible",
+        "locator_visible"
+      ],
+      "fields": {
+        "driver": {
+          "display_name": "浏览器驱动",
+          "description": "浏览器会话或驱动对象"
+        },
+        "element": {
+          "display_name": "目标元素",
+          "description": "网页元素句柄或选择器匹配表达式"
+        },
+        "timeout": {
+          "display_name": "超时时间 (秒)",
+          "description": "等待条件成立的最长超时秒数"
+        },
+        "by": {
+          "display_name": "定位策略",
+          "description": "元素定位策略 (如 id, css, xpath, name, tag_name)"
+        },
+        "visibility": {
+          "display_name": "可见性期望",
+          "description": "期望的可见状态: visible (可见) 或 hidden (隐藏)"
+        },
+        "mode": {
+          "display_name": "匹配模式",
+          "description": "匹配单个还是全部元素: first (首个) 或 all (全部)"
+        }
+      }
+    }
+  }
+}

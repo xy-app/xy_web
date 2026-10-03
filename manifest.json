@@ -1,7 +1,7 @@
 {
   "plugin_id": "xy_web",
   "name": "网页与浏览器自动化 (Web Automation)",
-  "version": "0.50.5",
+  "version": "0.51.0",
   "group": "Web",
   "group_icon": "🌐",
   "description": "提供自动打开 Chrome/Edge 浏览器、点击网页元素、自动填写表单、提取网页表格、处理弹窗与多标签页管理等功能",
